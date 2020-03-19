@@ -46,7 +46,7 @@ namespace GH.MiscToolbox.Components
             if (!DA.GetDataTree(0, out GH_Structure<IGH_Goo> tree))
                 return;
             int index = 0;
-            if (!DA.GetData(0, ref index))
+            if (!DA.GetData(1, ref index))
                 return;
 
             DA.SetDataList(0, tree.Branches[(index + tree.PathCount) % tree.PathCount]);

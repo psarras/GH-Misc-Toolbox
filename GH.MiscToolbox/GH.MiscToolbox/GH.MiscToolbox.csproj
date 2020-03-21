@@ -52,8 +52,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\EvaluateDomainComponent.cs" />
     <Compile Include="Components\GetBranchComponent.cs" />
     <Compile Include="Components\JoinPathComponent.cs" />
+    <Compile Include="Components\LengthDomainComponent.cs" />
     <Compile Include="Components\MassAndOrComponent.cs" />
     <Compile Include="Components\NormalizeComponent.cs" />
     <Compile Include="Components\DeconstructPathComponent.cs" />

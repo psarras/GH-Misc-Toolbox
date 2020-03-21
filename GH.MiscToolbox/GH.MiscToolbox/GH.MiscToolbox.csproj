@@ -62,6 +62,7 @@
     <Compile Include="Components\MassAndOrComponent.cs" />
     <Compile Include="Components\NormalizeComponent.cs" />
     <Compile Include="Components\DeconstructPathComponent.cs" />
+    <Compile Include="Components\RelativePathsComponent.cs" />
     <Compile Include="Components\RoundValuesComponent.cs" />
     <Compile Include="GH.MiscToolboxInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

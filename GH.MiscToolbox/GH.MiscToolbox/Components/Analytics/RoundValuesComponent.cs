@@ -14,7 +14,7 @@ namespace GH.MiscToolbox.Components
         public RoundValuesComponent()
           : base("Round Values", "RoundVal",
               "Round Values to significant digits",
-              "MiscToolbox", "Data")
+              "MiscToolbox", "Analytics")
         {
         }
 

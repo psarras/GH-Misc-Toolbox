@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
@@ -49,17 +50,97 @@ namespace GH.MiscToolbox.Components.Analytics
             if (!DA.GetData(1, ref selection))
                 return;
 
-            
-            double combinations = GetNumberOfCombinations(options, selection);
-
-            if(combinations < 999999)
+            switch (permType)
             {
-                var permutations = GetKCombs(Enumerable.Range(0, options), selection);
-                List<string> perm = permutations.Select(x => string.Join("", x)).ToList();
-                DA.SetDataList(1, perm);
+                case PermutationTypes.Permutations:
+                    break;
+                case PermutationTypes.Permutations_Rep:
+                    break;
+                case PermutationTypes.kComp_Rep:
+                    break;
+                case PermutationTypes.kComp:
+                    double combinations = GetNumberOfCombinations(options, selection);
+
+                    if (combinations < 999999)
+                    {
+                        var permutations = GetKCombs(Enumerable.Range(0, options), selection);
+                        List<string> perm = permutations.Select(x => string.Join("", x)).ToList();
+                        DA.SetDataList(1, perm);
+                    }
+                    DA.SetData(0, combinations);
+                    break;
+                default:
+                    break;
             }
 
-            DA.SetData(0, combinations);
+
+        }
+
+        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
+        {
+            base.AppendAdditionalMenuItems(menu);
+            ToolStripMenuItem item1 = Menu_AppendItem(menu, PermutationTypes.kComp.ToString(), Menu_kComp, true, permType == PermutationTypes.kComp);
+            ToolStripMenuItem item2 = Menu_AppendItem(menu, PermutationTypes.kComp_Rep.ToString(), Menu_kComp_RepRep, true, permType == PermutationTypes.kComp_Rep);
+            ToolStripMenuItem item3 = Menu_AppendItem(menu, PermutationTypes.Permutations.ToString(), Menu_Permutations, true, permType == PermutationTypes.Permutations);
+            ToolStripMenuItem item4 = Menu_AppendItem(menu, PermutationTypes.Permutations_Rep.ToString(), Menu_Permutations_Rep, true, permType == PermutationTypes.Permutations_Rep);
+        }
+
+        enum PermutationTypes
+        {
+            kComp,
+            kComp_Rep,
+            Permutations,
+            Permutations_Rep,
+        }
+
+        PermutationTypes permType;
+        private void Menu_Permutations_Rep(object sender, EventArgs e)
+        {
+            permType = PermutationTypes.Permutations_Rep;
+            this.ExpireSolution(true);
+            //this.ClearData();
+        }
+
+        private void Menu_Permutations(object sender, EventArgs e)
+        {
+            permType = PermutationTypes.Permutations;
+            this.ExpireSolution(true);
+
+        }
+
+        private void Menu_kComp(object sender, EventArgs e)
+        {
+            permType = PermutationTypes.kComp;
+            //this.ClearData();
+            this.ExpireSolution(true);
+        }
+
+        private void Menu_kComp_RepRep(object sender, EventArgs e)
+        {
+            permType = PermutationTypes.kComp_Rep;
+            //this.ClearData();
+            this.ExpireSolution(true);
+        }
+
+        //Make sure you tell the component how to Write / Read the Extra info (Absolute)
+        public override bool Write(GH_IO.Serialization.GH_IWriter writer)
+        {
+            // First add our own field.
+            writer.SetInt32("Permutation", (int)permType);
+            // Then call the base class implementation.
+            return base.Write(writer);
+        }
+
+        public override bool Read(GH_IO.Serialization.GH_IReader reader)
+        {
+            // First read our own field.
+            int val = 0;
+            if(reader.TryGetInt32("Permutation", ref val))
+            {
+                permType = (PermutationTypes)reader.GetInt32("Permutation");
+            }
+            // Then call the base class implementation.
+            return base.Read(reader);
         }
 
         /// <summary>

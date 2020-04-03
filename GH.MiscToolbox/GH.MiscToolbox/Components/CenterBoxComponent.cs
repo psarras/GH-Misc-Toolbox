@@ -43,15 +43,13 @@ namespace GH.MiscToolbox.Components
             Box box = new Box();
             if (!DA.GetData(0, ref box))
                 return;
-            
-            var x = box.X.Length / 2;
-            var y = box.Y.Length / 2;
-            var z = box.Z.Length / 2;
 
-            Box b = new Box(new Plane(box.Center, box.Plane.XAxis, box.Plane.YAxis), new Interval(-x, x), new Interval(-y, y), new Interval(-z, z));
+            Box b = box.CenterBox();
 
             DA.SetData(0, b);
         }
+
+
 
         /// <summary>
         /// Provides an Icon for the component.

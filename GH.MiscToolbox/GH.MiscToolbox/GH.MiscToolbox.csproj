@@ -52,7 +52,9 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoundingBoxExtentions.cs" />
     <Compile Include="Components\Analytics\PermutationsComponent.cs" />
+    <Compile Include="Components\ArrayGeometryComponent.cs" />
     <Compile Include="Components\CenterBoxComponent.cs" />
     <Compile Include="Components\ConstrainComponent.cs" />
     <Compile Include="Components\CreateEnumerationComponent.cs" />

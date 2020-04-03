@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Analytics\PermutationsComponent.cs" />
+    <Compile Include="Components\CenterBoxComponent.cs" />
     <Compile Include="Components\ConstrainComponent.cs" />
     <Compile Include="Components\CreateEnumerationComponent.cs" />
     <Compile Include="Components\EvaluateDomainComponent.cs" />

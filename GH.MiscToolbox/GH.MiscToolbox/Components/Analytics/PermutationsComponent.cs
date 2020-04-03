@@ -14,7 +14,7 @@ namespace GH.MiscToolbox.Components.Analytics
         /// </summary>
         public PermutationsComponent()
           : base("Permutations", "Perm",
-              "Calculate the different permutations",
+              "Calculate the different permutations. The combinent sets a limit of 1 million permutations so you will not crash GH by mistake",
               "MiscToolbox", "Analytics")
         {
         }
@@ -24,8 +24,8 @@ namespace GH.MiscToolbox.Components.Analytics
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Options", "O", "differnt choices to pick from", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Selection", "S", "number of differnt picks to get", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Options", "O", "Different choices to pick from", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Selection", "S", "Number of differnt picks to get", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -50,23 +50,53 @@ namespace GH.MiscToolbox.Components.Analytics
             if (!DA.GetData(1, ref selection))
                 return;
 
+            List<string> perm = new List<string>();
+            IEnumerable<IEnumerable<int>> permutations;
+            double combinations = 0;
             switch (permType)
             {
                 case PermutationTypes.Permutations:
+                    combinations = GetNumberOfPermutations(options, selection);
+                    if (combinations <= 1000000)
+                    {
+                        permutations = GetPermutations(Enumerable.Range(0, options), selection);
+                        perm = permutations.Select(x => string.Join("", x)).ToList();
+                    }
+                    DA.SetDataList(1, perm);
+                    DA.SetData(0, combinations);
+
                     break;
                 case PermutationTypes.Permutations_Rep:
+                    combinations = GetNumboerOfPermuationsRep(options, selection);
+                    if (combinations <= 1000000)
+                    {
+                        permutations = GetPermutationsWithRept(Enumerable.Range(0, options), selection);
+                        perm = permutations.Select(x => string.Join("", x)).ToList();
+                    }
+                    DA.SetDataList(1, perm);
+                    DA.SetData(0, combinations);
+
                     break;
                 case PermutationTypes.kComp_Rep:
+                    combinations = GetNumberOfKCombRep(options, selection);
+                    if (combinations <= 1000000)
+                    {
+                        permutations = GetKCombsWithRept(Enumerable.Range(0, options), selection);
+                        perm = permutations.Select(x => string.Join("", x)).ToList();
+                    }
+
+                    DA.SetDataList(1, perm);
+                    DA.SetData(0, combinations);
                     break;
                 case PermutationTypes.kComp:
-                    double combinations = GetNumberOfCombinations(options, selection);
+                    combinations = GetNumberOfKComb(options, selection);
 
-                    if (combinations < 999999)
+                    if (combinations <= 1000000)
                     {
-                        var permutations = GetKCombs(Enumerable.Range(0, options), selection);
-                        List<string> perm = permutations.Select(x => string.Join("", x)).ToList();
-                        DA.SetDataList(1, perm);
+                        permutations = GetKCombs(Enumerable.Range(0, options), selection);
+                        perm = permutations.Select(x => string.Join("", x)).ToList();
                     }
+                    DA.SetDataList(1, perm);
                     DA.SetData(0, combinations);
                     break;
                 default:
@@ -98,7 +128,6 @@ namespace GH.MiscToolbox.Components.Analytics
         {
             permType = PermutationTypes.Permutations_Rep;
             this.ExpireSolution(true);
-            //this.ClearData();
         }
 
         private void Menu_Permutations(object sender, EventArgs e)
@@ -111,14 +140,12 @@ namespace GH.MiscToolbox.Components.Analytics
         private void Menu_kComp(object sender, EventArgs e)
         {
             permType = PermutationTypes.kComp;
-            //this.ClearData();
             this.ExpireSolution(true);
         }
 
         private void Menu_kComp_RepRep(object sender, EventArgs e)
         {
             permType = PermutationTypes.kComp_Rep;
-            //this.ClearData();
             this.ExpireSolution(true);
         }
 
@@ -135,7 +162,7 @@ namespace GH.MiscToolbox.Components.Analytics
         {
             // First read our own field.
             int val = 0;
-            if(reader.TryGetInt32("Permutation", ref val))
+            if (reader.TryGetInt32("Permutation", ref val))
             {
                 permType = (PermutationTypes)reader.GetInt32("Permutation");
             }
@@ -207,10 +234,31 @@ namespace GH.MiscToolbox.Components.Analytics
                     (t1, t2) => t1.Concat(new T[] { t2 }));
         }
 
-        double GetNumberOfCombinations(double listLength, double conbinationSize)
+        /// <summary>
+        /// source: https://www.calculatorsoup.com/calculators/discretemathematics/
+        /// </summary>
+        /// <param name="listLength"></param>
+        /// <param name="conbinationSize"></param>
+        /// <returns></returns>
+        double GetNumberOfKComb(double listLength, double conbinationSize)
         {
             return Factorial(listLength) /
               (Factorial(conbinationSize) * Factorial(listLength - conbinationSize));
+        }
+
+        double GetNumberOfKCombRep(double listLength, double combinationSize)
+        {
+            return GetNumberOfKComb(listLength + combinationSize - 1, combinationSize);
+        }
+
+        double GetNumberOfPermutations(double listLength, double combinationSize)
+        {
+            return Factorial(listLength) / Factorial(listLength - combinationSize);
+        }
+
+        double GetNumboerOfPermuationsRep(double listLength, double combinationSize)
+        {
+            return Math.Pow(listLength, combinationSize);
         }
 
         double Factorial(double num)

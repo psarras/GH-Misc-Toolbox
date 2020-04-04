@@ -67,6 +67,7 @@
     <Compile Include="Components\MassAndOrComponent.cs" />
     <Compile Include="Components\NormalizeComponent.cs" />
     <Compile Include="Components\DeconstructPathComponent.cs" />
+    <Compile Include="Components\RandomReduceComponent.cs" />
     <Compile Include="Components\RelativePathsComponent.cs" />
     <Compile Include="Components\Analytics\RoundValuesComponent.cs" />
     <Compile Include="Components\SymmetricalDomainComponent.cs" />

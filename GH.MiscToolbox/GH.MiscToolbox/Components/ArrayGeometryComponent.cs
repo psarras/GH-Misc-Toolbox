@@ -52,7 +52,6 @@ namespace GH.MiscToolbox.Components
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGeometryParameter("Geometry", "G", "Geometry to array", GH_ParamAccess.tree);
-            //pManager.AddBoxParameter("Planes", "P", "Bounding Planes to array", GH_ParamAccess.list);
         }
 
         /// <summary>

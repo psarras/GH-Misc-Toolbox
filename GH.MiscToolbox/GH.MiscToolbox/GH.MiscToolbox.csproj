@@ -64,12 +64,14 @@
     <Compile Include="Components\Analytics\IntegerDivisorsComponent.cs" />
     <Compile Include="Components\JoinPathComponent.cs" />
     <Compile Include="Components\LengthDomainComponent.cs" />
+    <Compile Include="Components\LoadArchiveComponent.cs" />
     <Compile Include="Components\MassAndOrComponent.cs" />
     <Compile Include="Components\NormalizeComponent.cs" />
     <Compile Include="Components\DeconstructPathComponent.cs" />
     <Compile Include="Components\RandomReduceComponent.cs" />
     <Compile Include="Components\RelativePathsComponent.cs" />
     <Compile Include="Components\Analytics\RoundValuesComponent.cs" />
+    <Compile Include="Components\SaveArchiveComponent.cs" />
     <Compile Include="Components\SymmetricalDomainComponent.cs" />
     <Compile Include="Components\Analytics\ValueStatsComponent.cs" />
     <Compile Include="GH.MiscToolboxInfo.cs" />

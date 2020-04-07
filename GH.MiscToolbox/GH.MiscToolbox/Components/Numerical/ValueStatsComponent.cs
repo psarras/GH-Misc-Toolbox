@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class RoundValuesComponent : GH_Component
+    public class ValueStatsComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the RoundValuesComponent class.
+        /// Initializes a new instance of the ValueStatsComponent class.
         /// </summary>
-        public RoundValuesComponent()
-          : base("Round Values", "RoundVal",
-              "Round Values to significant digits",
-              "MiscToolbox", "Analytics")
+        public ValueStatsComponent()
+          : base("Value Stats", "ValStats",
+              "Get min, max, average value",
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,8 +23,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("Value", "V", "Values to round", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Significant Digits", "S", "Number of significant digits", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Value", "V", "Values to analyse", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -32,7 +31,9 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddNumberParameter("Value", "V", "Values rounded", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Min", "m", "Min value", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Max", "M", "Max value", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Average", "A", "Average value", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -41,15 +42,13 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var value = 0.0;
-            if (!DA.GetData(0, ref value))
+            var list = new List<double>();
+            if (!DA.GetDataList(0, list))
                 return;
 
-            var s = 0;
-            if (!DA.GetData(1, ref s))
-                return;
-
-            DA.SetData(0, Math.Round(value, s));
+            DA.SetData(0, list.Min());
+            DA.SetData(1, list.Max());
+            DA.SetData(2, list.Average());
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("71dba965-c638-427e-89d8-57b5b556e8b8"); }
+            get { return new Guid("f9f846ce-12c7-4cd2-8869-51b28736d6d5"); }
         }
     }
 }

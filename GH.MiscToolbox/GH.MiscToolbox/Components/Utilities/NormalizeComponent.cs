@@ -23,7 +23,7 @@ namespace GH.MiscToolbox.Components
         public NormalizeComponent()
           : base("Normalize", "Norm",
               "Normalize a series of values based on their min and max",
-              "MiscToolbox", "Data")
+              "MiscToolbox", "Numerical")
         {
         }
 

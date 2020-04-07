@@ -15,7 +15,7 @@ namespace GH.MiscToolbox.Components
         public DeconstructPathComponent()
           : base("Deconstruct Path", "DecPath",
               "Deconstruct a file path to its relevant attributes",
-              "MiscToolbox", "Path")
+              "MiscToolbox", "IO")
         {
         }
 

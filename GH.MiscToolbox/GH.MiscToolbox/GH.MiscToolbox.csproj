@@ -53,27 +53,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoundingBoxExtentions.cs" />
-    <Compile Include="Components\Analytics\PermutationsComponent.cs" />
-    <Compile Include="Components\ArrayGeometryComponent.cs" />
-    <Compile Include="Components\CenterBoxComponent.cs" />
-    <Compile Include="Components\ConstrainComponent.cs" />
-    <Compile Include="Components\CreateEnumerationComponent.cs" />
-    <Compile Include="Components\EvaluateDomainComponent.cs" />
-    <Compile Include="Components\FormatPercentageComponent.cs" />
-    <Compile Include="Components\GetBranchComponent.cs" />
-    <Compile Include="Components\Analytics\IntegerDivisorsComponent.cs" />
-    <Compile Include="Components\JoinPathComponent.cs" />
-    <Compile Include="Components\LengthDomainComponent.cs" />
-    <Compile Include="Components\LoadArchiveComponent.cs" />
-    <Compile Include="Components\MassAndOrComponent.cs" />
-    <Compile Include="Components\NormalizeComponent.cs" />
-    <Compile Include="Components\DeconstructPathComponent.cs" />
-    <Compile Include="Components\RandomReduceComponent.cs" />
-    <Compile Include="Components\RelativePathsComponent.cs" />
-    <Compile Include="Components\Analytics\RoundValuesComponent.cs" />
-    <Compile Include="Components\SaveArchiveComponent.cs" />
-    <Compile Include="Components\SymmetricalDomainComponent.cs" />
-    <Compile Include="Components\Analytics\ValueStatsComponent.cs" />
+    <Compile Include="Components\Numerical\PermutationsComponent.cs" />
+    <Compile Include="Components\Utilities\ArrayGeometryComponent.cs" />
+    <Compile Include="Components\Utilities\CenterBoxComponent.cs" />
+    <Compile Include="Components\Numerical\ConstrainComponent.cs" />
+    <Compile Include="Components\Data\CreateEnumerationComponent.cs" />
+    <Compile Include="Components\Numerical\EvaluateDomainComponent.cs" />
+    <Compile Include="Components\Numerical\FormatPercentageComponent.cs" />
+    <Compile Include="Components\Data\GetBranchComponent.cs" />
+    <Compile Include="Components\Numerical\IntegerDivisorsComponent.cs" />
+    <Compile Include="Components\IO\JoinPathComponent.cs" />
+    <Compile Include="Components\Numerical\LengthDomainComponent.cs" />
+    <Compile Include="Components\IO\LoadArchiveComponent.cs" />
+    <Compile Include="Components\Utilities\MassAndOrComponent.cs" />
+    <Compile Include="Components\Analysis\MeshRayIntersectionsParallelComponent.cs" />
+    <Compile Include="Components\Utilities\NormalizeComponent.cs" />
+    <Compile Include="Components\IO\DeconstructPathComponent.cs" />
+    <Compile Include="Components\Utilities\RandomReduceComponent.cs" />
+    <Compile Include="Components\IO\RelativePathsComponent.cs" />
+    <Compile Include="Components\Numerical\RoundValuesComponent.cs" />
+    <Compile Include="Components\IO\SaveArchiveComponent.cs" />
+    <Compile Include="Components\Numerical\SymmetricalDomainComponent.cs" />
+    <Compile Include="Components\Numerical\ValueStatsComponent.cs" />
     <Compile Include="GH.MiscToolboxInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +82,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.IO;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class EvaluateDomainComponent : GH_Component
+    public class RelativePathsComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the EvaluateIntervalComponent class.
+        /// Initializes a new instance of the RelativePathsComponent class.
         /// </summary>
-        public EvaluateDomainComponent()
-          : base("Evaluate Domain", "EvalDom",
-              "Description",
-              "MiscToolbox", "Data")
+        public RelativePathsComponent()
+          : base("Relative Paths", "RelPaths",
+              "Description", "MiscToolbox", "IO")
         {
         }
 
@@ -23,8 +22,8 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntervalParameter("Domain", "D", "Domain to evaluate from", GH_ParamAccess.item);
-            pManager.AddNumberParameter("t Parameter", "t", "Parameter to evaluate domain with. This is between [0, 1]", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Update", "U", "Use this to update the component. What you put will be ignored", GH_ParamAccess.tree);
+            pManager[0].Optional = true;
         }
 
         /// <summary>
@@ -32,7 +31,11 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddNumberParameter("Value", "V", "Value from evaluation", GH_ParamAccess.item);
+            pManager.AddTextParameter("Grasshopper", "G", "Grasshopper file relevant Path", GH_ParamAccess.item);
+            pManager.AddTextParameter("Rhino", "R", "Rhino file relevant path", GH_ParamAccess.item);
+            pManager.AddTextParameter("Current", "C", "Current file path", GH_ParamAccess.item);
+            pManager.AddTextParameter("Temp", "T", "Temp path", GH_ParamAccess.item);
+            pManager.AddTextParameter("Random Filename", "R", "Generated random file name from system", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -41,14 +44,11 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            Interval interval = new Interval();
-            if (!DA.GetData(0, ref interval))
-                return;
-            double t = 0;
-            if (!DA.GetData(1, ref t))
-                return;
-
-            DA.SetData(0, interval.ParameterAt(t));
+            DA.SetData(0, Rhino.RhinoDoc.ActiveDoc.Path);
+            DA.SetData(1, OnPingDocument().FilePath);
+            DA.SetData(2, Directory.GetCurrentDirectory());
+            DA.SetData(3, Path.GetTempPath());
+            DA.SetData(4, Path.GetRandomFileName());
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("2762b400-4f17-4c75-9e11-54a54ea086bc"); }
+            get { return new Guid("b452e0ff-7a27-4f2a-8aed-1f1f51a1bb9f"); }
         }
     }
 }

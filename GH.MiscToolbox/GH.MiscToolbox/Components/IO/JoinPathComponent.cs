@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.IO;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
 using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class GetBranchComponent : GH_Component
+    public class JoinPathComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the GetBranchComponent class.
+        /// Initializes a new instance of the JoinPathComponent class.
         /// </summary>
-        public GetBranchComponent()
-          : base("GetBranch", "GetBranch",
-              "Get the Branch of a component and also safely wrap the bounds so you will never run out of index.",
-              "MiscToolbox", "Data")
+        public JoinPathComponent()
+          : base("JoinPathComponent", "JPath",
+              "Description",
+              "MiscToolbox", "IO")
         {
         }
 
@@ -25,8 +23,11 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("Tree", "T", "Tree to get Branch from", GH_ParamAccess.tree);
-            pManager.AddIntegerParameter("index", "i", "Branch Index to get", GH_ParamAccess.item);
+            pManager.AddTextParameter("Paths", "P", "Paths to combine", GH_ParamAccess.list);
+            pManager.AddTextParameter("FileName", "F", "Optional Filename to create", GH_ParamAccess.item);
+            pManager.AddTextParameter("Extention", "E", "Extention to use for the file", GH_ParamAccess.item);
+            pManager[1].Optional = true;
+            pManager[2].Optional = true;
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Branch", "B", "Resulting branch", GH_ParamAccess.list);
+            pManager.AddTextParameter("Path", "P", "Resulting Path", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -43,13 +44,23 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            if (!DA.GetDataTree(0, out GH_Structure<IGH_Goo> tree))
+            var root = new List<string>();
+            if (!DA.GetDataList(0, root))
                 return;
-            int index = 0;
-            if (!DA.GetData(1, ref index))
-                return;
+            string filename = "";
+            if (DA.GetData(1, ref filename) && !filename.Equals(""))
+            {
+                root.Add(filename);
+            }
 
-            DA.SetDataList(0, tree.Branches[(index + tree.PathCount) % tree.PathCount]);
+            var combined = Path.Combine(root.ToArray());
+            string extention = "";
+            if (DA.GetData(2, ref extention) && !extention.Equals(""))
+            {
+                combined = Path.ChangeExtension(combined, extention);
+            }
+
+            DA.SetData(0, combined);
 
         }
 
@@ -71,7 +82,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("526cfbd8-0463-4481-8239-d3259d76ea80"); }
+            get { return new Guid("0f6c51cf-8a33-4b22-b6ff-76f11e1d6bb8"); }
         }
     }
 }

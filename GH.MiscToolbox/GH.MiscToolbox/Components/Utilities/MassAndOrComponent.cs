@@ -6,15 +6,15 @@ using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class ConstrainComponent : GH_Component
+    public class MassAndOrComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ConstrainComponent class.
+        /// Initializes a new instance of the MassAndComponent class.
         /// </summary>
-        public ConstrainComponent()
-          : base("Constrain", "Con",
-              "Constrain values between two numbers",
-              "MiscToolbox", "Data")
+        public MassAndOrComponent()
+          : base("MassAndOr", "MassAndOr",
+              "Check if all values are True, Or at least one is",
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,9 +23,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("Value", "V", "Values to constrain", GH_ParamAccess.list);
-            pManager.AddNumberParameter("Min", "m", "Values to constrain", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Max", "M", "Values to constrain", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("Values", "V", "Values to check", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -33,7 +31,8 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddNumberParameter("Value", "V", "Constrained values", GH_ParamAccess.list);
+            pManager.AddBooleanParameter("And", "A", "All are true", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("Or", "O", "At least one is true", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -42,22 +41,12 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var values = new List<double>();
-            if (!DA.GetDataList(0, values))
+            List<bool> data = new List<bool>();
+            if (!DA.GetDataList(0, data))
                 return;
 
-            var min = 0.0;
-            if (!DA.GetData(1, ref min))
-                return;
-
-            var max = 0.0;
-            if (!DA.GetData(2, ref max))
-                return;
-
-            values = values.Select(x => x < min ? min : x > max ? max : x).ToList();
-
-            DA.SetDataList(0, values);
-
+            DA.SetData(0, data.All(x => x));
+            DA.SetData(1, data.Exists(x => x == true));
         }
 
         /// <summary>
@@ -78,7 +67,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("8de7f80b-53df-452a-ab48-08b88eb707cf"); }
+            get { return new Guid("b65853a2-7b33-46ac-a2cf-9b456a11613d"); }
         }
     }
 }

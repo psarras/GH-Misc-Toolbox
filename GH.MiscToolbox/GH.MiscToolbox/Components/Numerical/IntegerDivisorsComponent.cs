@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class MassAndOrComponent : GH_Component
+    public class IntegerDivisorsComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the MassAndComponent class.
+        /// Initializes a new instance of the IntegerDivisorsComponent class.
         /// </summary>
-        public MassAndOrComponent()
-          : base("MassAndOr", "MassAndOr",
-              "Check if all values are True, Or at least one is",
-              "MiscToolbox", "Data")
+        public IntegerDivisorsComponent()
+          : base("Integer Divisors", "IntDiv",
+              "Get all the integer divisors",
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,7 +23,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Values", "V", "Values to check", GH_ParamAccess.list);
+            pManager.AddIntegerParameter("Value", "V", "Value to analyse for integer divisions", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -31,8 +31,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddBooleanParameter("And", "A", "All are true", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Or", "O", "At least one is true", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Divisors", "D", "Integer divisors", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -41,12 +40,18 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            List<bool> data = new List<bool>();
-            if (!DA.GetDataList(0, data))
+            int value = 0;
+            if (!DA.GetData(0, ref value))
                 return;
 
-            DA.SetData(0, data.All(x => x));
-            DA.SetData(1, data.Exists(x => x == true));
+            var divisors = new List<int>();
+            for (int i = 1; i <= value; i++)
+            {
+                if(value % i == 0)
+                    divisors.Add(i);
+            }
+
+            DA.SetDataList(0, divisors);
         }
 
         /// <summary>
@@ -67,7 +72,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("b65853a2-7b33-46ac-a2cf-9b456a11613d"); }
+            get { return new Guid("4722fcd7-8f11-4985-b61d-c68c12d17c1f"); }
         }
     }
 }

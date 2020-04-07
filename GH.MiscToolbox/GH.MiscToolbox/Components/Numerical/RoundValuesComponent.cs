@@ -6,15 +6,15 @@ using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class LengthDomainComponent : GH_Component
+    public class RoundValuesComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the LengthDomainComponent class.
+        /// Initializes a new instance of the RoundValuesComponent class.
         /// </summary>
-        public LengthDomainComponent()
-          : base("Length Domain", "LenDom",
-              "Description",
-              "MiscToolbox", "Data")
+        public RoundValuesComponent()
+          : base("Round Values", "RoundVal",
+              "Round Values to significant digits",
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,7 +23,8 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntervalParameter("Domain", "D", "Domain to get length from", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Value", "V", "Values to round", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Significant Digits", "S", "Number of significant digits", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddNumberParameter("Length", "L", "Length of the Domain", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Value", "V", "Values rounded", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -40,11 +41,15 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            Interval interval = new Interval();
-            if (!DA.GetData(0, ref interval))
+            var value = 0.0;
+            if (!DA.GetData(0, ref value))
                 return;
 
-            DA.SetData(0, interval.Length);
+            var s = 0;
+            if (!DA.GetData(1, ref s))
+                return;
+
+            DA.SetData(0, Math.Round(value, s));
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("d4a4e844-fc7f-402e-b10a-3951d7b84349"); }
+            get { return new Guid("71dba965-c638-427e-89d8-57b5b556e8b8"); }
         }
     }
 }

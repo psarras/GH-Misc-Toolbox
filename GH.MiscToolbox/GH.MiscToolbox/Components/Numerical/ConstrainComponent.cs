@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class SymmetricalDomainComponent : GH_Component
+    public class ConstrainComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the SymmetricalDomainComponent class.
+        /// Initializes a new instance of the ConstrainComponent class.
         /// </summary>
-        public SymmetricalDomainComponent()
-          : base("Symmetrical Domain", "SymDom",
-              "Create a symmetrical domain based on the given value",
-              "MiscToolbox", "Data")
+        public ConstrainComponent()
+          : base("Constrain", "Con",
+              "Constrain values between two numbers",
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,7 +23,9 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("Value", "V", "Value to use to create a domain", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Value", "V", "Values to constrain", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Min", "m", "Values to constrain", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Max", "M", "Values to constrain", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddIntervalParameter("Domain", "D", "Symmetrical domain", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Value", "V", "Constrained values", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -40,11 +42,22 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            double val = 0;
-            if (!DA.GetData(0, ref val))
+            var values = new List<double>();
+            if (!DA.GetDataList(0, values))
                 return;
 
-            DA.SetData(0, new Interval(-val, val));
+            var min = 0.0;
+            if (!DA.GetData(1, ref min))
+                return;
+
+            var max = 0.0;
+            if (!DA.GetData(2, ref max))
+                return;
+
+            values = values.Select(x => x < min ? min : x > max ? max : x).ToList();
+
+            DA.SetDataList(0, values);
+
         }
 
         /// <summary>
@@ -65,7 +78,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("0a994264-9adb-4cb7-ac20-168f3a805ce0"); }
+            get { return new Guid("8de7f80b-53df-452a-ab48-08b88eb707cf"); }
         }
     }
 }

@@ -6,15 +6,15 @@ using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class IntegerDivisorsComponent : GH_Component
+    public class LengthDomainComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the IntegerDivisorsComponent class.
+        /// Initializes a new instance of the LengthDomainComponent class.
         /// </summary>
-        public IntegerDivisorsComponent()
-          : base("Integer Divisors", "IntDiv",
-              "Get all the integer divisors",
-              "MiscToolbox", "Analytics")
+        public LengthDomainComponent()
+          : base("Length Domain", "LenDom",
+              "Description",
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,7 +23,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Value", "V", "Value to analyse for integer divisions", GH_ParamAccess.item);
+            pManager.AddIntervalParameter("Domain", "D", "Domain to get length from", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Divisors", "D", "Integer divisors", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Length", "L", "Length of the Domain", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -40,18 +40,11 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            int value = 0;
-            if (!DA.GetData(0, ref value))
+            Interval interval = new Interval();
+            if (!DA.GetData(0, ref interval))
                 return;
 
-            var divisors = new List<int>();
-            for (int i = 1; i <= value; i++)
-            {
-                if(value % i == 0)
-                    divisors.Add(i);
-            }
-
-            DA.SetDataList(0, divisors);
+            DA.SetData(0, interval.Length);
         }
 
         /// <summary>
@@ -72,7 +65,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("4722fcd7-8f11-4985-b61d-c68c12d17c1f"); }
+            get { return new Guid("d4a4e844-fc7f-402e-b10a-3951d7b84349"); }
         }
     }
 }

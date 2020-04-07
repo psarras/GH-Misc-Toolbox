@@ -15,7 +15,7 @@ namespace GH.MiscToolbox.Components.Analytics
         public PermutationsComponent()
           : base("Permutations", "Perm",
               "Calculate the different permutations. The combinent sets a limit of 1 million permutations so you will not crash GH by mistake",
-              "MiscToolbox", "Analytics")
+              "MiscToolbox", "Numerical")
         {
         }
 

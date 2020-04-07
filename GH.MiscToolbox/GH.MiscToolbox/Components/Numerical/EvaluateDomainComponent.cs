@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class JoinPathComponent : GH_Component
+    public class EvaluateDomainComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the JoinPathComponent class.
+        /// Initializes a new instance of the EvaluateIntervalComponent class.
         /// </summary>
-        public JoinPathComponent()
-          : base("JoinPathComponent", "JPath",
+        public EvaluateDomainComponent()
+          : base("Evaluate Domain", "EvalDom",
               "Description",
-              "MiscToolbox", "Path")
+              "MiscToolbox", "Numerical")
         {
         }
 
@@ -23,11 +23,8 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Paths", "P", "Paths to combine", GH_ParamAccess.list);
-            pManager.AddTextParameter("FileName", "F", "Optional Filename to create", GH_ParamAccess.item);
-            pManager.AddTextParameter("Extention", "E", "Extention to use for the file", GH_ParamAccess.item);
-            pManager[1].Optional = true;
-            pManager[2].Optional = true;
+            pManager.AddIntervalParameter("Domain", "D", "Domain to evaluate from", GH_ParamAccess.item);
+            pManager.AddNumberParameter("t Parameter", "t", "Parameter to evaluate domain with. This is between [0, 1]", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -35,7 +32,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Path", "P", "Resulting Path", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Value", "V", "Value from evaluation", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -44,24 +41,14 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            var root = new List<string>();
-            if (!DA.GetDataList(0, root))
+            Interval interval = new Interval();
+            if (!DA.GetData(0, ref interval))
                 return;
-            string filename = "";
-            if (DA.GetData(1, ref filename) && !filename.Equals(""))
-            {
-                root.Add(filename);
-            }
+            double t = 0;
+            if (!DA.GetData(1, ref t))
+                return;
 
-            var combined = Path.Combine(root.ToArray());
-            string extention = "";
-            if (DA.GetData(2, ref extention) && !extention.Equals(""))
-            {
-                combined = Path.ChangeExtension(combined, extention);
-            }
-
-            DA.SetData(0, combined);
-
+            DA.SetData(0, interval.ParameterAt(t));
         }
 
         /// <summary>
@@ -82,7 +69,7 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("0f6c51cf-8a33-4b22-b6ff-76f11e1d6bb8"); }
+            get { return new Guid("2762b400-4f17-4c75-9e11-54a54ea086bc"); }
         }
     }
 }

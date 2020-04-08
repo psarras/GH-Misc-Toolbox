@@ -23,10 +23,10 @@ namespace GH.MiscToolbox.Components
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddMeshParameter("Mesh", "M", "Context mesh that can obstruct target", GH_ParamAccess.item);
-            pManager.AddMeshParameter("Target Mesh", "Mt", "Mesh for a target to check against", GH_ParamAccess.item);
+            pManager.AddMeshParameter("Mesh", "M", "Context mesh that can obstruct target", GH_ParamAccess.list);
+            pManager.AddMeshParameter("Target Mesh", "Mt", "Mesh for a target to check against", GH_ParamAccess.item); //List
             pManager.AddPointParameter("Point", "P", "Point to start ray from", GH_ParamAccess.list);
-            pManager.AddPointParameter("Target", "T", "Points representing the target", GH_ParamAccess.list);
+            pManager.AddPointParameter("Target", "T", "Points representing the target", GH_ParamAccess.list); // Tree
             pManager.AddBooleanParameter("Run", "R", "Run analysis", GH_ParamAccess.item);
         }
 
@@ -36,6 +36,9 @@ namespace GH.MiscToolbox.Components
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddNumberParameter("Intersections", "I", "percentage of target points each panel hits", GH_ParamAccess.list);
+            pManager.AddLineParameter("Ray", "R", "Ray hits, used for debugging", GH_ParamAccess.tree);
+            pManager.AddNumberParameter("Distance", "D", "Distance to each hit, used for debugging", GH_ParamAccess.tree);
+            pManager.AddBooleanParameter("Hit", "H", "If you hit the target, used for debugging", GH_ParamAccess.tree);
         }
 
         /// <summary>
@@ -44,8 +47,8 @@ namespace GH.MiscToolbox.Components
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            Mesh M = null;
-            if (!DA.GetData(0, ref M))
+            List<Mesh> M = new List<Mesh>();
+            if (!DA.GetDataList(0, M))
                 return;
             Mesh Mt = null;
             if (!DA.GetData(1, ref Mt))
@@ -67,9 +70,12 @@ namespace GH.MiscToolbox.Components
             List<int> hits = new List<int>();
             var jobs = new List<Tuple<int, int, Ray3d, Mesh, int>>();
 
-            var faceIndex = M.Faces.Count;
+            var context = new Mesh();
+            M.ForEach(x => context.Append(x));
 
-            M.Append(Mt);
+            var faceIndex = context.Faces.Count;
+
+            context.Append(Mt);
 
             for (int i = 0; i < points.Count; i++)
             {
@@ -77,7 +83,7 @@ namespace GH.MiscToolbox.Components
                 {
                     //  Cast Ray
                     Ray3d ray = new Ray3d((Point3d)points[i], targets[j] - points[i]);
-                    jobs.Add(new Tuple<int, int, Ray3d, Mesh, int>(i, j, ray, M, faceIndex));
+                    jobs.Add(new Tuple<int, int, Ray3d, Mesh, int>(i, j, ray, context, faceIndex));
                 }
             }
 
@@ -95,11 +101,31 @@ namespace GH.MiscToolbox.Components
             var pointIntersections = intersectData.Select(x => Average(x));
 
             DA.SetDataList(0, pointIntersections);
+
+            if(raysDebug)
+            {
+                var lines = pointData.Select((x, i) => x.Select(y => new Line(points[i], y)).ToArray()).ToArray();
+                DA.SetDataTree(1, lines.ToTree());
+            }
+
+            if(distDebug)
+            {
+                DA.SetDataTree(2, distData.ToTree());
+            }
+
+            if(hitsDebug)
+            {
+                DA.SetDataTree(3, intersectData.ToTree());
+            }
+
         }
 
         double[][] distData;
         Point3d[][] pointData;
         bool[][] intersectData;
+        private bool raysDebug = true;
+        private bool distDebug = true;
+        private bool hitsDebug = true;
 
         public double Average(bool[] data)
         {
@@ -111,18 +137,6 @@ namespace GH.MiscToolbox.Components
             }
             return (1.0 * count) / data.Length;
         }
-
-        //public void RunJob(Tuple<int, int, Ray3d, Mesh> task)
-        //{
-        //    double d = Rhino.Geometry.Intersect.Intersection.MeshRay(task.Item4, task.Item3);
-
-        //    distData[task.Item1][task.Item2] = d;
-        //    if (d != -1)
-        //        pointData[task.Item1][task.Item2] = task.Item3.PointAt(d);
-        //    else
-        //        pointData[task.Item1][task.Item2] = Point3d.Unset;
-        //    intersectData[task.Item1][task.Item2] = d != -1;
-        //}
 
         public void RunJob(Tuple<int, int, Ray3d, Mesh, int> task)
         {

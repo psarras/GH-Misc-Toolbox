@@ -76,6 +76,7 @@
     <Compile Include="Components\Numerical\SymmetricalDomainComponent.cs" />
     <Compile Include="Components\Numerical\ValueStatsComponent.cs" />
     <Compile Include="GH.MiscToolboxInfo.cs" />
+    <Compile Include="GHStructureExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

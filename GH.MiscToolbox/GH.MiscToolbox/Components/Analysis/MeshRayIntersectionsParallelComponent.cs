@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
@@ -70,7 +71,7 @@ namespace GH.MiscToolbox.Components
                 return;
 
             List<int> hits = new List<int>();
-            var jobs = new List<Tuple<int, int, Ray3d, Mesh, int[]>>();
+            var jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
 
             var context = new Mesh();
             M.ForEach(x => context.Append(x));
@@ -83,9 +84,10 @@ namespace GH.MiscToolbox.Components
                 return;
             }
 
-            int[] faceBarriers = new int[Mt.Count];
+            int[] faceBarriers = new int[Mt.Count + 1];
+
             faceBarriers[0] = context.Faces.Count;
-            for (int i = 0; i < Mt.Count - 1; i++)
+            for (int i = 0; i < Mt.Count; i++)
             {
                 faceBarriers[i + 1] = Mt[i].Faces.Count;
             }
@@ -99,6 +101,7 @@ namespace GH.MiscToolbox.Components
 
             for (int k = 0; k < Mt.Count; k++)
             {
+                jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
                 distData = new double[points.Count][];
                 pointData = new Point3d[points.Count][];
                 intersectData = new bool[points.Count][];
@@ -118,7 +121,7 @@ namespace GH.MiscToolbox.Components
                     {
                         //  Cast Ray
                         Ray3d ray = new Ray3d(points[i], targets[k][j].Value - points[i]);
-                        jobs.Add(new Tuple<int, int, Ray3d, Mesh, int[]>(i, j, ray, context, faceBarriers));
+                        jobs.Add(new Tuple<int, int, Ray3d, Mesh, int[], int>(i, j, ray, context, faceBarriers, k + 1));
                     }
                 }
 
@@ -199,27 +202,27 @@ namespace GH.MiscToolbox.Components
             intersectData[task.Item1][task.Item2] = d >= 0 && targetHit;
         }
 
-        public void RunJob(Tuple<int, int, Ray3d, Mesh, int[]> task)
+        public void RunJob(Tuple<int, int, Ray3d, Mesh, int[], int> task)
         {
             int[] indeces;
             double d = Rhino.Geometry.Intersect.Intersection.MeshRay(task.Item4, task.Item3, out indeces);
 
             var targetHit = false;
-            targetIndexData[task.Item1][task.Item2] = -2; // Missed
+            //targetIndexData[task.Item1][task.Item2] = -2; // Missed
             if (indeces != null && indeces.Length > 0)
             {
                 var index = indeces.First();
 
-                for (int i = 0; i < task.Item5.Length; i++)
-                {
-                    var faceID = task.Item5[i];
+                //for (int i = 0; i < task.Item5.Length; i++)
+                //{
+                    var faceID = task.Item5[task.Item6];
                     if (index <= faceID)
                     {
-                        targetIndexData[task.Item1][task.Item2] = i - 1;
+                        //targetIndexData[task.Item1][task.Item2] = i - 1;
                         targetHit = true;
-                        break;
+                        //break;
                     }
-                }
+                //}
             }
 
             distData[task.Item1][task.Item2] = d;
@@ -229,6 +232,33 @@ namespace GH.MiscToolbox.Components
                 pointData[task.Item1][task.Item2] = Point3d.Unset;
 
             intersectData[task.Item1][task.Item2] = d >= 0 && targetHit;
+        }
+
+        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
+        {
+            base.AppendAdditionalMenuItems(menu);
+            ToolStripMenuItem item1 = Menu_AppendItem(menu, "Rays Debug", Menu_Rays, true, raysDebug);
+            ToolStripMenuItem item2 = Menu_AppendItem(menu, "Distances", Menu_dist, true, distDebug);
+            ToolStripMenuItem item3 = Menu_AppendItem(menu, "Hits", Menu_hits, true, hitsDebug);
+
+        }
+
+        private void Menu_hits(object sender, EventArgs e)
+        {
+            hitsDebug = !hitsDebug;
+            ExpireSolution(true);
+        }
+
+        private void Menu_dist(object sender, EventArgs e)
+        {
+            distDebug = !distDebug;
+            ExpireSolution(true);
+        }
+
+        private void Menu_Rays(object sender, EventArgs e)
+        {
+            raysDebug = !raysDebug;
+            ExpireSolution(true);
         }
 
         /// <summary>

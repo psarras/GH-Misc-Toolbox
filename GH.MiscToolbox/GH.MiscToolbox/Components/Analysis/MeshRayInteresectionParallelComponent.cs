@@ -31,11 +31,12 @@ namespace GH.MiscToolbox.Components.Analysis
             pManager.AddMeshParameter("Target Mesh", "Mt", "Mesh for a target to check against", GH_ParamAccess.list);
             pManager[1].Optional = true;
             pManager.AddPointParameter("Point", "P", "Point to start ray from", GH_ParamAccess.list);
-            pManager.AddGenericParameter("Normal", "N", "This can be either a Vector or a Plane. Used for orienting the Vectors", GH_ParamAccess.list); // This can be a plane as well or a vector assuming a plane with normal plane
+            pManager.AddGenericParameter("Normal", "N", "This can be either a Vector or a Plane. Used for orienting the Vectors", GH_ParamAccess.list);
             pManager.AddVectorParameter("Vectors", "V", "Vectors with Y Axis being forward, those will be oriented to match the normal of the samples", GH_ParamAccess.list);
             pManager.AddNumberParameter("Weights", "W", "Optional weight per Vector, the sum of the succesfull hits per Target would be outputed", GH_ParamAccess.list);
             pManager[5].Optional = true;
-            pManager.AddBooleanParameter("Run", "R", "Run analysis", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Distance", "D", "Distance threshold. More than that and the Hit is acounted. Leave negative for infinite distance", GH_ParamAccess.item, -1);
+            pManager.AddBooleanParameter("Run", "R", "Run analysis", GH_ParamAccess.item, true);
         }
 
         /// <summary>
@@ -103,9 +104,13 @@ namespace GH.MiscToolbox.Components.Analysis
                 return;
             List<double> weights = new List<double>();
             DA.GetDataList(5, weights);
+            threshold = -1;
+            if (!DA.GetData(6, ref threshold))
+                return;
+            IncludeThreshold = threshold > 0;
 
             bool run = false;
-            if (!DA.GetData(6, ref run))
+            if (!DA.GetData(7, ref run))
                 return;
 
 
@@ -247,6 +252,9 @@ namespace GH.MiscToolbox.Components.Analysis
         bool[][] hitData;
         int[][] targetIndexData;
 
+        private double threshold = 0;
+        private bool IncludeThreshold = false;
+
         private bool raysDebug = false;
         private bool distDebug = false;
         private bool hitsDebug = false;
@@ -261,7 +269,7 @@ namespace GH.MiscToolbox.Components.Analysis
 
             var targetHit = false;
             targetIndexData[task.Item1][task.Item2] = -2; // Missed
-            if (indeces != null && indeces.Length > 0)
+            if (indeces != null && indeces.Length > 0 && (!IncludeThreshold || d < threshold))
             {
                 var index = indeces[0];
 

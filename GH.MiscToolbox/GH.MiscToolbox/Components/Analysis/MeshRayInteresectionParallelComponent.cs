@@ -29,9 +29,12 @@ namespace GH.MiscToolbox.Components.Analysis
         {
             pManager.AddMeshParameter("Mesh", "M", "Context mesh that can obstruct target", GH_ParamAccess.list);
             pManager.AddMeshParameter("Target Mesh", "Mt", "Mesh for a target to check against", GH_ParamAccess.list);
+            pManager[1].Optional = true;
             pManager.AddPointParameter("Point", "P", "Point to start ray from", GH_ParamAccess.list);
-            pManager.AddVectorParameter("Normal", "N", "Normal to use for orienting the Vectors", GH_ParamAccess.list); // This can be a plane as well or a vector assuming a plane with normal plane
+            pManager.AddGenericParameter("Normal", "N", "This can be either a Vector or a Plane. Used for orienting the Vectors", GH_ParamAccess.list); // This can be a plane as well or a vector assuming a plane with normal plane
             pManager.AddVectorParameter("Vectors", "V", "Vectors with Y Axis being forward, those will be oriented to match the normal of the samples", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Weights", "W", "Optional weight per Vector, the sum of the succesfull hits per Target would be outputed", GH_ParamAccess.list);
+            pManager[5].Optional = true;
             pManager.AddBooleanParameter("Run", "R", "Run analysis", GH_ParamAccess.item);
         }
 
@@ -41,6 +44,7 @@ namespace GH.MiscToolbox.Components.Analysis
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddIntegerParameter("Results", "R", "Total Hit on each Target, The first two  slots are reserved for miss, context and then goes each Mesh in Mt", GH_ParamAccess.tree);
+            pManager.AddNumberParameter("Values", "V", "Total Values based on weights per Target", GH_ParamAccess.tree);
             pManager.AddNumberParameter("Intersections", "I", "percentage of target points each panel hits", GH_ParamAccess.tree);
             pManager.AddLineParameter("Ray", "R", "Ray hits, used for debugging", GH_ParamAccess.tree);
             pManager.AddNumberParameter("Distance", "D", "Distance to each hit, used for debugging", GH_ParamAccess.tree);
@@ -58,19 +62,50 @@ namespace GH.MiscToolbox.Components.Analysis
             if (!DA.GetDataList(0, M))
                 return;
             List<Mesh> Mt = new List<Mesh>();
-            if (!DA.GetDataList(1, Mt))
-                return;
+            DA.GetDataList(1, Mt);
+
             List<Point3d> points = new List<Point3d>();
             if (!DA.GetDataList(2, points))
                 return;
-            List<Vector3d> normals = new List<Vector3d>();
-            if (!DA.GetDataList(3, normals))
+            var normalInput = new List<GH_ObjectWrapper>();
+            if (!DA.GetDataList(3, normalInput))
                 return;
+
+            var sample = normalInput.First().Value;
+            List<Plane> planeNormals = new List<Plane>();
+            List<Vector3d> vectorNormals = new List<Vector3d>();
+            bool isPlane = false;
+            if (sample is GH_Plane)
+            {
+                isPlane = true;
+                foreach (var p in normalInput)
+                {
+                    if (p.Value is GH_Plane plane)
+                        planeNormals.Add(plane.Value);
+                }
+            }
+            else if(sample is GH_Vector)
+            {
+                foreach (var v in normalInput)
+                {
+                    if (v.Value is GH_Vector vector3d)
+                        vectorNormals.Add(vector3d.Value);
+                }
+            }
+            else
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "You must provide either planes of vectors for normals");
+                return;
+            }
+
             List<Vector3d> vectors = new List<Vector3d>();
             if (!DA.GetDataList(4, vectors))
                 return;
+            List<double> weights = new List<double>();
+            DA.GetDataList(5, weights);
+
             bool run = false;
-            if (!DA.GetData(5, ref run))
+            if (!DA.GetData(6, ref run))
                 return;
 
 
@@ -83,7 +118,7 @@ namespace GH.MiscToolbox.Components.Analysis
             var context = new Mesh();
             M.ForEach(x => context.Append(x));
 
-            if (points.Count != normals.Count)
+            if (points.Count != (isPlane ? planeNormals.Count : vectorNormals.Count))
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Provide equal amount of points and vectors");
                 return;
@@ -120,9 +155,18 @@ namespace GH.MiscToolbox.Components.Analysis
             var origin = Plane.WorldXY;
             for (int i = 0; i < points.Count; i++)
             {
-                // Assume normal Plane
-                var xaxis = Vector3d.CrossProduct(Vector3d.ZAxis, normals[i]);
-                var plane = new Plane(points[i], xaxis, normals[i]);
+                Plane plane = Plane.Unset;
+                if(!isPlane)
+                {
+                    // Assume normal Plane
+                    var xaxis = Vector3d.CrossProduct(Vector3d.ZAxis, vectorNormals[i]);
+                    plane = new Plane(points[i], xaxis, vectorNormals[i]);
+                }
+                else
+                {
+                    plane = planeNormals[i];
+                }
+
                 // Orient Vectors Around Normal
                 var transformation = Transform.PlaneToPlane(origin, plane);
                 var copy = vectors.Select(x => (Point3d)x).ToList();
@@ -157,27 +201,44 @@ namespace GH.MiscToolbox.Components.Analysis
                 cumulativeResults[i] = cumulativeAnswers;
             }
 
+            if (weights.Count > 0)
+            {
+                double[][] values = new double[points.Count][];
+                for (int i = 0; i < points.Count; i++)
+                {
+                    double[] cumulativeValues = new double[Mt.Count + 2];
+
+                    for (int j = 0; j < vectors.Count; j++)
+                    {
+                        cumulativeValues[targetIndexData[i][j] + 2] += weights[j];
+                    }
+                    values[i] = cumulativeValues;
+                }
+                DA.SetDataTree(1, values.ToTree());
+            }
+
             DA.SetDataTree(0, cumulativeResults.ToTree());
 
             if (IndexDebug)
-                DA.SetDataTree(1, targetIndexData.ToTree());
+                DA.SetDataTree(2, targetIndexData.ToTree());
 
             if (raysDebug)
             {
                 var lines = pointData.Select((x, i) => x.Select((y, j) => hitData[i][j] ? new Line(points[i], y) : Line.Unset).ToArray()).ToArray();
-                DA.SetDataTree(2, lines.ToTree());
-
+                DA.SetDataTree(3, lines.ToTree());
             }
 
 
             if (distDebug)
-                DA.SetDataTree(3, distData.ToTree());
+                DA.SetDataTree(4, distData.ToTree());
 
             if (hitsDebug)
-                DA.SetDataTree(4, hitData.ToTree());
+                DA.SetDataTree(5, hitData.ToTree());
 
             if (vectorsDebug)
-                DA.SetDataTree(5, vectorsTransformed.ToTree());
+                DA.SetDataTree(6, vectorsTransformed.ToTree());
+
+
 
         }
 

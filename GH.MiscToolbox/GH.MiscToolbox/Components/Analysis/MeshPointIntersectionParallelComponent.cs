@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using GH_IO.Serialization;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
@@ -126,9 +127,14 @@ namespace GH.MiscToolbox.Components
 
                 System.Threading.Tasks.Parallel.ForEach(jobs, x => RunJob(x));
                 var pointIntersections = hitData.Select(x => Average(x));
-                distDataResults[k] = distData;
+                if (distDebug)
+                    distDataResults[k] = distData;
+
                 hitDataResults[k] = hitData;
-                pointDataResults[k] = pointData;
+
+                if (raysDebug)
+                    pointDataResults[k] = pointData;
+
                 results.Merge(pointIntersections.ToList());
             }
 
@@ -143,14 +149,10 @@ namespace GH.MiscToolbox.Components
 
 
             if (distDebug)
-            {
                 DA.SetDataTree(2, distDataResults.ToTree<double>());
-            }
 
             if (hitsDebug)
-            {
                 DA.SetDataTree(3, hitDataResults.ToTree<bool>());
-            }
 
 
         }
@@ -158,9 +160,9 @@ namespace GH.MiscToolbox.Components
         double[][] distData;
         Point3d[][] pointData;
         bool[][] hitData;
-        private bool raysDebug = true;
-        private bool distDebug = true;
-        private bool hitsDebug = true;
+        private bool raysDebug = false;
+        private bool distDebug = false;
+        private bool hitsDebug = false;
 
         public double Average(bool[] data)
         {
@@ -210,18 +212,22 @@ namespace GH.MiscToolbox.Components
             {
                 var index = indeces[0];
                 var faceID = task.Item5[task.Item6];
-                if (index <= faceID)
+                var faceIDLow = task.Item5[task.Item6 - 1];
+                if (index < faceID && index >= faceIDLow)
                 {
                     targetHit = true;
                 }
             }
 
-            distData[task.Item1][task.Item2] = d;
-            if (d >= 0)
-                pointData[task.Item1][task.Item2] = task.Item3.PointAt(d);
-            else
-                pointData[task.Item1][task.Item2] = Point3d.Unset;
-
+            if (distDebug)
+                distData[task.Item1][task.Item2] = d;
+            if (raysDebug)
+            {
+                if (d >= 0)
+                    pointData[task.Item1][task.Item2] = task.Item3.PointAt(d);
+                else
+                    pointData[task.Item1][task.Item2] = Point3d.Unset;
+            }
             hitData[task.Item1][task.Item2] = d >= 0 && targetHit;
         }
 
@@ -229,18 +235,18 @@ namespace GH.MiscToolbox.Components
         {
             base.AppendAdditionalMenuItems(menu);
             ToolStripMenuItem item1 = Menu_AppendItem(menu, "Rays Debug", Menu_Rays, true, raysDebug);
-            ToolStripMenuItem item2 = Menu_AppendItem(menu, "Distances", Menu_dist, true, distDebug);
-            ToolStripMenuItem item3 = Menu_AppendItem(menu, "Hits", Menu_hits, true, hitsDebug);
+            ToolStripMenuItem item2 = Menu_AppendItem(menu, "Distances", Menu_Dist, true, distDebug);
+            ToolStripMenuItem item3 = Menu_AppendItem(menu, "Hits", Menu_Hits, true, hitsDebug);
 
         }
 
-        private void Menu_hits(object sender, EventArgs e)
+        private void Menu_Hits(object sender, EventArgs e)
         {
             hitsDebug = !hitsDebug;
             ExpireSolution(true);
         }
 
-        private void Menu_dist(object sender, EventArgs e)
+        private void Menu_Dist(object sender, EventArgs e)
         {
             distDebug = !distDebug;
             ExpireSolution(true);
@@ -250,6 +256,23 @@ namespace GH.MiscToolbox.Components
         {
             raysDebug = !raysDebug;
             ExpireSolution(true);
+        }
+
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetBoolean("hitsDebug", hitsDebug);
+            writer.SetBoolean("distDebug", distDebug);
+            writer.SetBoolean("raysDebug", raysDebug);
+
+            return base.Write(writer);
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            hitsDebug = reader.GetBoolean("hitsDebug");
+            distDebug = reader.GetBoolean("distDebug");
+            raysDebug = reader.GetBoolean("raysDebug");
+            return base.Read(reader);
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using GH_IO.Serialization;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
@@ -39,6 +40,7 @@ namespace GH.MiscToolbox.Components.Analysis
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddIntegerParameter("Results", "R", "Total Hit on each Target, The first two  slots are reserved for miss, context and then goes each Mesh in Mt", GH_ParamAccess.tree);
             pManager.AddNumberParameter("Intersections", "I", "percentage of target points each panel hits", GH_ParamAccess.tree);
             pManager.AddLineParameter("Ray", "R", "Ray hits, used for debugging", GH_ParamAccess.tree);
             pManager.AddNumberParameter("Distance", "D", "Distance to each hit, used for debugging", GH_ParamAccess.tree);
@@ -115,7 +117,7 @@ namespace GH.MiscToolbox.Components.Analysis
                 vectorsTransformed[i] = new Vector3d[vectors.Count];
             }
 
-            var origin = Plane.WorldXY;// new Plane(new Point3d(), Vector3d.YAxis);
+            var origin = Plane.WorldXY;
             for (int i = 0; i < points.Count; i++)
             {
                 // Assume normal Plane
@@ -123,19 +125,18 @@ namespace GH.MiscToolbox.Components.Analysis
                 var plane = new Plane(points[i], xaxis, normals[i]);
                 // Orient Vectors Around Normal
                 var transformation = Transform.PlaneToPlane(origin, plane);
-                //var transformation = Transform.Rotation(0.1, Vector3d.ZAxis, new Point3d());
                 var copy = vectors.Select(x => (Point3d)x).ToList();
-                //copy.ForEach(x => x.Transform(transformation));
 
                 for (int j = 0; j < copy.Count; j++)
                 {
+                    // Couldn't make it work with transforming vectors...
                     var line = new Line(new Point3d(), new Vector3d(copy[j]), 2);
                     line.Transform(transformation);
                     copy[j] = line.To;
                 }
 
                 vectorsTransformed[i] = copy.Select(x => x - points[i]).ToArray();
-                
+
                 for (int j = 0; j < copy.Count; j++)
                 {
                     //  Cast Ray
@@ -145,37 +146,38 @@ namespace GH.MiscToolbox.Components.Analysis
             }
 
             System.Threading.Tasks.Parallel.ForEach(jobs, x => RunJob(x));
+            int[][] cumulativeResults = new int[points.Count][];
+            for (int i = 0; i < points.Count; i++)
+            {
+                int[] cumulativeAnswers = new int[Mt.Count + 2];
+                for (int j = 0; j < vectors.Count; j++)
+                {
+                    cumulativeAnswers[targetIndexData[i][j] + 2]++;
+                }
+                cumulativeResults[i] = cumulativeAnswers;
+            }
 
-            //for (int i = 0; i < points.Count; i++)
-            //{
-            //    for (int j = 0; j < length; j++)
-            //    {
+            DA.SetDataTree(0, cumulativeResults.ToTree());
 
-            //    }
-            //}
-
-
-            DA.SetDataTree(0, targetIndexData.ToTree());
+            if (IndexDebug)
+                DA.SetDataTree(1, targetIndexData.ToTree());
 
             if (raysDebug)
             {
                 var lines = pointData.Select((x, i) => x.Select((y, j) => hitData[i][j] ? new Line(points[i], y) : Line.Unset).ToArray()).ToArray();
-                DA.SetDataTree(1, lines.ToTree());
+                DA.SetDataTree(2, lines.ToTree());
 
             }
 
 
             if (distDebug)
-            {
-                DA.SetDataTree(2, distData.ToTree());
-            }
+                DA.SetDataTree(3, distData.ToTree());
 
             if (hitsDebug)
-            {
-                DA.SetDataTree(3, hitData.ToTree());
-            }
+                DA.SetDataTree(4, hitData.ToTree());
 
-            DA.SetDataTree(4, vectorsTransformed.ToTree());
+            if (vectorsDebug)
+                DA.SetDataTree(5, vectorsTransformed.ToTree());
 
         }
 
@@ -184,9 +186,12 @@ namespace GH.MiscToolbox.Components.Analysis
         bool[][] hitData;
         int[][] targetIndexData;
 
-        private bool raysDebug = true;
-        private bool distDebug = true;
-        private bool hitsDebug = true;
+        private bool raysDebug = false;
+        private bool distDebug = false;
+        private bool hitsDebug = false;
+
+        private bool IndexDebug = false;
+        private bool vectorsDebug = false;
 
         public void RunJob(Tuple<int, int, Ray3d, Mesh, int[]> task)
         {
@@ -211,11 +216,16 @@ namespace GH.MiscToolbox.Components.Analysis
                 }
             }
 
-            distData[task.Item1][task.Item2] = d;
-            if (d >= 0)
-                pointData[task.Item1][task.Item2] = task.Item3.PointAt(d);
-            else
-                pointData[task.Item1][task.Item2] = Point3d.Unset;
+            if (distDebug)
+                distData[task.Item1][task.Item2] = d;
+
+            if (raysDebug)
+            {
+                if (d >= 0)
+                    pointData[task.Item1][task.Item2] = task.Item3.PointAt(d);
+                else
+                    pointData[task.Item1][task.Item2] = Point3d.Unset;
+            }
 
             hitData[task.Item1][task.Item2] = d >= 0 && targetHit;
         }
@@ -223,19 +233,33 @@ namespace GH.MiscToolbox.Components.Analysis
         public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
         {
             base.AppendAdditionalMenuItems(menu);
+            ToolStripMenuItem item4 = Menu_AppendItem(menu, "Indeces", Menu_Indices, true, IndexDebug);
             ToolStripMenuItem item1 = Menu_AppendItem(menu, "Rays Debug", Menu_Rays, true, raysDebug);
-            ToolStripMenuItem item2 = Menu_AppendItem(menu, "Distances", Menu_dist, true, distDebug);
-            ToolStripMenuItem item3 = Menu_AppendItem(menu, "Hits", Menu_hits, true, hitsDebug);
+            ToolStripMenuItem item2 = Menu_AppendItem(menu, "Distances", Menu_Dist, true, distDebug);
+            ToolStripMenuItem item3 = Menu_AppendItem(menu, "Hits", Menu_Hits, true, hitsDebug);
+            ToolStripMenuItem item5 = Menu_AppendItem(menu, "Vectors", Menu_Vectors, true, vectorsDebug);
 
         }
 
-        private void Menu_hits(object sender, EventArgs e)
+        private void Menu_Vectors(object sender, EventArgs e)
+        {
+            vectorsDebug = !vectorsDebug;
+            ExpireSolution(true);
+        }
+
+        private void Menu_Indices(object sender, EventArgs e)
+        {
+            IndexDebug = !IndexDebug;
+            ExpireSolution(true);
+        }
+
+        private void Menu_Hits(object sender, EventArgs e)
         {
             hitsDebug = !hitsDebug;
             ExpireSolution(true);
         }
 
-        private void Menu_dist(object sender, EventArgs e)
+        private void Menu_Dist(object sender, EventArgs e)
         {
             distDebug = !distDebug;
             ExpireSolution(true);
@@ -245,6 +269,27 @@ namespace GH.MiscToolbox.Components.Analysis
         {
             raysDebug = !raysDebug;
             ExpireSolution(true);
+        }
+
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetBoolean("vectorsDebug", vectorsDebug);
+            writer.SetBoolean("IndexDebug", IndexDebug);
+            writer.SetBoolean("hitsDebug", hitsDebug);
+            writer.SetBoolean("distDebug", distDebug);
+            writer.SetBoolean("raysDebug", raysDebug);
+
+            return base.Write(writer);
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            vectorsDebug = reader.GetBoolean("vectorsDebug");
+            IndexDebug = reader.GetBoolean("IndexDebug");
+            hitsDebug = reader.GetBoolean("hitsDebug");
+            distDebug = reader.GetBoolean("distDebug");
+            raysDebug = reader.GetBoolean("raysDebug");
+            return base.Read(reader);
         }
 
         /// <summary>

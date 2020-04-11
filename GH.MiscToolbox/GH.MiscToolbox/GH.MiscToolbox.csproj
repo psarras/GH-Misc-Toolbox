@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoundingBoxExtentions.cs" />
+    <Compile Include="Components\Analysis\MeshRayInteresectionParallelComponent.cs" />
     <Compile Include="Components\Numerical\PermutationsComponent.cs" />
     <Compile Include="Components\Utilities\ArrayGeometryComponent.cs" />
     <Compile Include="Components\Utilities\CenterBoxComponent.cs" />
@@ -66,7 +67,7 @@
     <Compile Include="Components\Numerical\LengthDomainComponent.cs" />
     <Compile Include="Components\IO\LoadArchiveComponent.cs" />
     <Compile Include="Components\Utilities\MassAndOrComponent.cs" />
-    <Compile Include="Components\Analysis\MeshRayIntersectionsParallelComponent.cs" />
+    <Compile Include="Components\Analysis\MeshPointIntersectionParallelComponent.cs" />
     <Compile Include="Components\Utilities\NormalizeComponent.cs" />
     <Compile Include="Components\IO\DeconstructPathComponent.cs" />
     <Compile Include="Components\Utilities\RandomReduceComponent.cs" />

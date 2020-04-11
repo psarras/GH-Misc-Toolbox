@@ -9,14 +9,14 @@ using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components
 {
-    public class MeshRayIntersectionsParallelComponent : GH_Component
+    public class MeshPointIntersectionParallelComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the MeshRayIntersectionsParallelComponent class.
         /// </summary>
-        public MeshRayIntersectionsParallelComponent()
-          : base("Mesh Ray Intersections Parallel", "MeshRay",
-              "Description",
+        public MeshPointIntersectionParallelComponent()
+          : base("Mesh Point Intersections Parallel", "MeshPoint",
+              "Run an analysis for meshes for specific target points",
               "MiscToolbox", "Analysis")
         {
         }
@@ -89,14 +89,15 @@ namespace GH.MiscToolbox.Components
             faceBarriers[0] = context.Faces.Count;
             for (int i = 0; i < Mt.Count; i++)
             {
-                faceBarriers[i + 1] = Mt[i].Faces.Count;
+                faceBarriers[i + 1] = faceBarriers[i] + Mt[i].Faces.Count;
             }
+
             faceBarriers.Where(x => x == 10).Select((x, i) => i);
             Mt.ForEach(x => context.Append(x));
 
             List<List<double>> results = new List<List<double>>();
             double[][][] distDataResults = new double[Mt.Count][][];
-            bool[][][] intersectDataResults = new bool[Mt.Count][][];
+            bool[][][] hitDataResults = new bool[Mt.Count][][];
             Point3d[][][] pointDataResults = new Point3d[Mt.Count][][];
 
             for (int k = 0; k < Mt.Count; k++)
@@ -104,15 +105,13 @@ namespace GH.MiscToolbox.Components
                 jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
                 distData = new double[points.Count][];
                 pointData = new Point3d[points.Count][];
-                intersectData = new bool[points.Count][];
-                targetIndexData = new int[points.Count][];
+                hitData = new bool[points.Count][];
 
                 for (int i = 0; i < points.Count; i++)
                 {
                     distData[i] = new double[targets[k].Count];
                     pointData[i] = new Point3d[targets[k].Count];
-                    intersectData[i] = new bool[targets[k].Count];
-                    targetIndexData[i] = new int[targets[k].Count];
+                    hitData[i] = new bool[targets[k].Count];
                 }
 
                 for (int i = 0; i < points.Count; i++)
@@ -126,40 +125,39 @@ namespace GH.MiscToolbox.Components
                 }
 
                 System.Threading.Tasks.Parallel.ForEach(jobs, x => RunJob(x));
-                var pointIntersections = intersectData.Select(x => Average(x));
+                var pointIntersections = hitData.Select(x => Average(x));
                 distDataResults[k] = distData;
-                intersectDataResults[k] = intersectData;
+                hitDataResults[k] = hitData;
                 pointDataResults[k] = pointData;
                 results.Merge(pointIntersections.ToList());
             }
 
             DA.SetDataTree(0, results.ToTree());
 
-            
+
             if (raysDebug)
             {
                 var lines = pointDataResults.Select((x, i) => x.Select((y, j) => y.Select((z, k) => new Line(points[j], z)).ToArray()).ToArray()).ToArray();
                 DA.SetDataTree(1, lines.ToTree<Line>());
             }
-            
+
 
             if (distDebug)
             {
                 DA.SetDataTree(2, distDataResults.ToTree<double>());
             }
-            
+
             if (hitsDebug)
             {
-                DA.SetDataTree(3, intersectDataResults.ToTree<bool>());
+                DA.SetDataTree(3, hitDataResults.ToTree<bool>());
             }
-            
+
 
         }
 
         double[][] distData;
         Point3d[][] pointData;
-        bool[][] intersectData;
-        int[][] targetIndexData;
+        bool[][] hitData;
         private bool raysDebug = true;
         private bool distDebug = true;
         private bool hitsDebug = true;
@@ -199,7 +197,7 @@ namespace GH.MiscToolbox.Components
             else
                 pointData[task.Item1][task.Item2] = Point3d.Unset;
 
-            intersectData[task.Item1][task.Item2] = d >= 0 && targetHit;
+            hitData[task.Item1][task.Item2] = d >= 0 && targetHit;
         }
 
         public void RunJob(Tuple<int, int, Ray3d, Mesh, int[], int> task)
@@ -208,21 +206,14 @@ namespace GH.MiscToolbox.Components
             double d = Rhino.Geometry.Intersect.Intersection.MeshRay(task.Item4, task.Item3, out indeces);
 
             var targetHit = false;
-            //targetIndexData[task.Item1][task.Item2] = -2; // Missed
             if (indeces != null && indeces.Length > 0)
             {
-                var index = indeces.First();
-
-                //for (int i = 0; i < task.Item5.Length; i++)
-                //{
-                    var faceID = task.Item5[task.Item6];
-                    if (index <= faceID)
-                    {
-                        //targetIndexData[task.Item1][task.Item2] = i - 1;
-                        targetHit = true;
-                        //break;
-                    }
-                //}
+                var index = indeces[0];
+                var faceID = task.Item5[task.Item6];
+                if (index <= faceID)
+                {
+                    targetHit = true;
+                }
             }
 
             distData[task.Item1][task.Item2] = d;
@@ -231,7 +222,7 @@ namespace GH.MiscToolbox.Components
             else
                 pointData[task.Item1][task.Item2] = Point3d.Unset;
 
-            intersectData[task.Item1][task.Item2] = d >= 0 && targetHit;
+            hitData[task.Item1][task.Item2] = d >= 0 && targetHit;
         }
 
         public override void AppendAdditionalMenuItems(ToolStripDropDown menu)

@@ -66,6 +66,7 @@
     <Compile Include="Components\IO\JoinPathComponent.cs" />
     <Compile Include="Components\Numerical\LengthDomainComponent.cs" />
     <Compile Include="Components\IO\LoadArchiveComponent.cs" />
+    <Compile Include="Components\Utilities\CenterLineComponent.cs" />
     <Compile Include="Components\Utilities\MassAndOrComponent.cs" />
     <Compile Include="Components\Analysis\MeshPointIntersectionParallelComponent.cs" />
     <Compile Include="Components\Utilities\NormalizeComponent.cs" />

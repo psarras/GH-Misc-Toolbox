@@ -67,6 +67,7 @@
     <Compile Include="Components\Numerical\LengthDomainComponent.cs" />
     <Compile Include="Components\IO\LoadArchiveComponent.cs" />
     <Compile Include="Components\Utilities\CenterLineComponent.cs" />
+    <Compile Include="Components\Utilities\InscribedRectangleComponent.cs" />
     <Compile Include="Components\Utilities\MassAndOrComponent.cs" />
     <Compile Include="Components\Analysis\MeshPointIntersectionParallelComponent.cs" />
     <Compile Include="Components\Utilities\MinVolumeBoundingBoxComponent.cs" />

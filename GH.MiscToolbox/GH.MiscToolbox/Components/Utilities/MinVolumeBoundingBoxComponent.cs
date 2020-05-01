@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using GH_IO.Serialization;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
@@ -8,6 +10,14 @@ namespace GH.MiscToolbox.Components.Utilities
 {
     public class MinVolumeBoundingBoxComponent : GH_Component
     {
+
+        private int m_rotations = 90; // default
+        private double m_rotation_factor;
+        const double TO_RADIANS = Math.PI / 180;
+        private bool RotateX = true;
+        private bool RotateY = true;
+        private bool RotateZ = true;
+
         /// <summary>
         /// Heavely based on this discussion: https://discourse.mcneel.com/t/minimum-oriented-bounding-box-implementation-in-grasshopper-python-script-node/64344/61
         /// Thanks Mitch and Ril
@@ -26,6 +36,7 @@ namespace GH.MiscToolbox.Components.Utilities
         {
             pManager.AddGeometryParameter("Geometry", "G", "Geometry around boundingbox", GH_ParamAccess.list);
             pManager.AddNumberParameter("Degrees", "D", "Controls the accuracy. The smaller the number the more rotations will be checked", GH_ParamAccess.item, 1);
+            pManager.AddPlaneParameter("Plane", "P", "Start Plane to use rotations, also the center is used for rebasing the final Box", GH_ParamAccess.item, Plane.WorldXY);
         }
 
         /// <summary>
@@ -47,7 +58,9 @@ namespace GH.MiscToolbox.Components.Utilities
                 return;
 
             var plane = Plane.WorldXY;
-            
+            if (!DA.GetData(2, ref plane))
+                return;
+
             m_rotation_factor = 1;
             if (!DA.GetData(1, ref m_rotation_factor))
                 return;
@@ -59,36 +72,80 @@ namespace GH.MiscToolbox.Components.Utilities
             DA.SetData(0, bb);
         }
 
-        private int m_rotations = 90; // default
-        private double m_rotation_factor;
-        const double TO_RADIANS = Math.PI / 180;
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetBoolean("Rotate X", RotateX);
+            writer.SetBoolean("Rotate Y", RotateY);
+            writer.SetBoolean("Rotate Z", RotateZ);
+            return base.Write(writer);
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            RotateX = reader.GetBoolean("Rotate X");
+            RotateY = reader.GetBoolean("Rotate Y");
+            RotateZ = reader.GetBoolean("Rotate Z");
+            return base.Read(reader);
+        }
+
+        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
+        {
+            base.AppendAdditionalMenuItems(menu);
+            ToolStripMenuItem item1 = Menu_AppendItem(menu, "Rotate X", Menu_RotateX, true, RotateX);
+            ToolStripMenuItem item2 = Menu_AppendItem(menu, "Rotate Y", Menu_RotateY, true, RotateY);
+            ToolStripMenuItem item3 = Menu_AppendItem(menu, "Rotate Z", Menu_RotateZ, true, RotateZ);
+        }
+
+        private void Menu_RotateX(object sender, EventArgs e)
+        {
+            RotateX = !RotateX;
+            ExpireSolution(true);
+        }
+
+        private void Menu_RotateY(object sender, EventArgs e)
+        {
+            RotateY = !RotateY;
+            ExpireSolution(true);
+        }
+
+        private void Menu_RotateZ(object sender, EventArgs e)
+        {
+            RotateZ = !RotateZ;
+            ExpireSolution(true);
+        }
 
         private Plane RotateAllCombinationsOfPlane(List<GeometryBase> geo, Plane initial_plane)
         {
+            var plane = initial_plane;
+            var rotation = 0.0;
             // --------------------------------------
             // Rotate about X axis of initial plane
             // --------------------------------------
             var rotation_axis = initial_plane.XAxis;
-            var rotation = GetRotationAtMinimumVolume(geo, initial_plane, rotation_axis);
-            var plane_x = initial_plane;
-            plane_x.Rotate(rotation, rotation_axis);
+            if (RotateX)
+            {
+                rotation = GetRotationAtMinimumVolume(geo, initial_plane, rotation_axis);
+                plane.Rotate(rotation, rotation_axis);
+            }
 
             // --------------------------------------
             // Rotate about Y axis of rotated plane_x
             // --------------------------------------
-            rotation_axis = plane_x.YAxis;
-            rotation = GetRotationAtMinimumVolume(geo, plane_x, rotation_axis);
-            var plane_y = plane_x;
-            plane_y.Rotate(rotation, rotation_axis);
-
+            rotation_axis = plane.YAxis;
+            if (RotateY)
+            {
+                rotation = GetRotationAtMinimumVolume(geo, plane, rotation_axis);
+                plane.Rotate(rotation, rotation_axis);
+            }
             // --------------------------------------
             // Rotate about Z axis of rotated plane_y
             // --------------------------------------
-            rotation_axis = plane_y.ZAxis;
-            rotation = GetRotationAtMinimumVolume(geo, plane_y, rotation_axis);
-            var plane_z = plane_y;
-            plane_z.Rotate(rotation, rotation_axis);
-
+            rotation_axis = plane.ZAxis;
+            if (RotateZ)
+            {
+                rotation = GetRotationAtMinimumVolume(geo, plane, rotation_axis);
+                plane.Rotate(rotation, rotation_axis);
+            }
             // =====================================
             // Another round of rotations starting
             // from the 3 axes of the last plane_z
@@ -97,28 +154,34 @@ namespace GH.MiscToolbox.Components.Utilities
             // --------------------------------------
             // Rotate about X axis of rotated plane_z
             // --------------------------------------
-            rotation_axis = plane_z.XAxis;
-            rotation = GetRotationAtMinimumVolume(geo, plane_z, rotation_axis);
-            var plane_x_refined = plane_z;
-            plane_x_refined.Rotate(rotation, rotation_axis);
+            rotation_axis = plane.XAxis;
+            if (RotateX)
+            {
+                rotation = GetRotationAtMinimumVolume(geo, plane, rotation_axis);
+                plane.Rotate(rotation, rotation_axis);
+            }
 
             // --------------------------------------
             // Rotate about Y axis of refined plane_z
             // --------------------------------------
-            rotation_axis = plane_x_refined.YAxis;
-            rotation = GetRotationAtMinimumVolume(geo, plane_x_refined, rotation_axis);
-            var plane_y_refined = plane_x_refined;
-            plane_y_refined.Rotate(rotation, rotation_axis);
+            rotation_axis = plane.YAxis;
+            if (RotateY)
+            {
+                rotation = GetRotationAtMinimumVolume(geo, plane, rotation_axis);
+                plane.Rotate(rotation, rotation_axis);
+            }
 
             // --------------------------------------
             // Rotate about Z axis of refined plane_y
             // --------------------------------------
-            rotation_axis = plane_y_refined.ZAxis;
-            rotation = GetRotationAtMinimumVolume(geo, plane_y_refined, rotation_axis);
-            var plane_z_refined = plane_y_refined;
-            plane_z_refined.Rotate(rotation, rotation_axis);
+            rotation_axis = plane.ZAxis;
+            if (RotateZ)
+            {
+                rotation = GetRotationAtMinimumVolume(geo, plane, rotation_axis);
+                plane.Rotate(rotation, rotation_axis);
+            }
 
-            return plane_z_refined; // the lastly rotated plane
+            return plane; // the lastly rotated plane
         }
 
         /// <summary>
@@ -176,7 +239,7 @@ namespace GH.MiscToolbox.Components.Utilities
         private static Box GetBox(List<GeometryBase> geo, Plane plane)
         {
             geo.First().GetBoundingBox(plane, out Box worldBox);
-            geo.ForEach(x => 
+            geo.ForEach(x =>
             {
                 x.GetBoundingBox(plane, out Box b);
                 b.GetCorners().ToList().ForEach(y => worldBox.Union(y));

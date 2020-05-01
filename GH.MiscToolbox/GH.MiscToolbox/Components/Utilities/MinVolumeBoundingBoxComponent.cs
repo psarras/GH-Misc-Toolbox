@@ -25,6 +25,7 @@ namespace GH.MiscToolbox.Components.Utilities
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGeometryParameter("Geometry", "G", "Geometry around boundingbox", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Degrees", "D", "Controls the accuracy. The smaller the number the more rotations will be checked", GH_ParamAccess.item, 1);
         }
 
         /// <summary>
@@ -46,12 +47,14 @@ namespace GH.MiscToolbox.Components.Utilities
                 return;
 
             var plane = Plane.WorldXY;
-            m_rotations = 90;
+            
             m_rotation_factor = 1;
+            if (!DA.GetData(1, ref m_rotation_factor))
+                return;
+            m_rotations = (int)(90 / m_rotation_factor);
 
-            plane = RotateAllCombinationsOfPlane(geometryBases.First(), plane);
-            var bb = Box.Unset; 
-            geometryBases.First().GetBoundingBox(plane, out bb);
+            plane = RotateAllCombinationsOfPlane(geometryBases, plane);
+            var bb = GetBox(geometryBases, plane);
 
             DA.SetData(0, bb);
         }
@@ -60,7 +63,7 @@ namespace GH.MiscToolbox.Components.Utilities
         private double m_rotation_factor;
         const double TO_RADIANS = Math.PI / 180;
 
-        private Plane RotateAllCombinationsOfPlane(GeometryBase geo, Plane initial_plane)
+        private Plane RotateAllCombinationsOfPlane(List<GeometryBase> geo, Plane initial_plane)
         {
             // --------------------------------------
             // Rotate about X axis of initial plane
@@ -122,7 +125,7 @@ namespace GH.MiscToolbox.Components.Utilities
         /// Returns the rotation (in radians) of the smallest volume. The parallel loop
         /// performs m_rotations rotations of 1º each (90 rotations is default)
         /// </summary>
-        private double GetRotationAtMinimumVolume(GeometryBase geo, Plane start_plane, Vector3d rotation_axis)
+        private double GetRotationAtMinimumVolume(List<GeometryBase> geo, Plane start_plane, Vector3d rotation_axis)
         {
             var rotated_volumes = new double[m_rotations];
             var rad_angle_factor = m_rotation_factor * TO_RADIANS; // calculate once
@@ -150,13 +153,40 @@ namespace GH.MiscToolbox.Components.Utilities
                 // tween threads so that any one thread would overwrite the result produced by
                 // another thread, and therefore no data-races will occur. This is a red-neck
                 // approach which ALWAYS works if the size of the array can be known in advance
-                rotated_volumes[i] = geo.GetBoundingBox(_plane).ToBrep().GetVolume();//.Volume;
+                BoundingBox bb = GetBoundingBox(geo, _plane);
+                rotated_volumes[i] = bb.ToBrep().GetVolume();//.Volume;
             });
 
             // now find that index (degree of rotation) at which we had the smallest BoundingBox
             var rotation = IndexOfMinimumVolume(ref rotated_volumes);
             // Convert Degrees to Radians before returning the angle
             return rotation * rad_angle_factor;
+        }
+
+        private static BoundingBox GetBoundingBox(List<GeometryBase> geo, Plane plane)
+        {
+            var bb = GetBoundingBoxWorld(geo.First(), plane);
+            geo.ForEach(x =>
+            {
+                bb.Union(GetBoundingBoxWorld(x, plane));
+            });
+            return bb;
+        }
+
+        private static Box GetBox(List<GeometryBase> geo, Plane plane)
+        {
+            geo.First().GetBoundingBox(plane, out Box worldBox);
+            geo.ForEach(x => 
+            {
+                x.GetBoundingBox(plane, out Box b);
+                b.GetCorners().ToList().ForEach(y => worldBox.Union(y));
+            });
+            return worldBox;
+        }
+
+        public static BoundingBox GetBoundingBoxWorld(GeometryBase geometryBase, Plane plane)
+        {
+            return geometryBase.GetBoundingBox(plane);
         }
 
         /// <summary>

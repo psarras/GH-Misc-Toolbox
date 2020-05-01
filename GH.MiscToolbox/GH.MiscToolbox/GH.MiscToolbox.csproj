@@ -76,6 +76,7 @@
     <Compile Include="Components\IO\SaveArchiveComponent.cs" />
     <Compile Include="Components\Numerical\SymmetricalDomainComponent.cs" />
     <Compile Include="Components\Numerical\ValueStatsComponent.cs" />
+    <Compile Include="Components\Utilities\RebaseRectangle3dComponent.cs" />
     <Compile Include="GH.MiscToolboxInfo.cs" />
     <Compile Include="GHStructureExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

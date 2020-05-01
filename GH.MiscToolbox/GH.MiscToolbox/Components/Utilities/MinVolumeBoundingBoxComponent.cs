@@ -20,7 +20,11 @@ namespace GH.MiscToolbox.Components.Utilities
 
         /// <summary>
         /// Heavely based on this discussion: https://discourse.mcneel.com/t/minimum-oriented-bounding-box-implementation-in-grasshopper-python-script-node/64344/61
+        /// Original Author Ilja Asanovic (Python)                                       
+        /// Parallel C# version, code refactored: RIL
         /// Thanks Mitch and Ril
+        /// 
+        /// Ported as a Library / Features: Stamatios Psarras
         /// </summary>
         public MinVolumeBoundingBoxComponent()
           : base("MinVolume BoundingBox", "MinBB",

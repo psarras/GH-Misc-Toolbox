@@ -28,9 +28,13 @@ namespace GH.MiscToolbox.Components
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddMeshParameter("Mesh", "M", "Context mesh that can obstruct target", GH_ParamAccess.list);
-            pManager.AddMeshParameter("Target Mesh", "Mt", "Mesh for a target to check against", GH_ParamAccess.list); //List
+            pManager.AddMeshParameter("Target Mesh", "Mt", "Mesh for a target to check against", GH_ParamAccess.list);
             pManager.AddPointParameter("Point", "P", "Point to start ray from", GH_ParamAccess.list);
-            pManager.AddPointParameter("Target", "T", "Points representing the target", GH_ParamAccess.tree); // Tree
+            pManager.AddVectorParameter("Normal", "N", "Normal to use for the sample", GH_ParamAccess.list);
+            pManager[3].Optional = true;
+            pManager.AddPointParameter("Target", "T", "Points representing the target", GH_ParamAccess.tree);
+            pManager.AddNumberParameter("Angle", "A", "Angle threshold in radians", GH_ParamAccess.item, -1);
+            pManager[5].Optional = true;
             pManager.AddBooleanParameter("Run", "R", "Run analysis", GH_ParamAccess.item);
         }
 
@@ -60,14 +64,17 @@ namespace GH.MiscToolbox.Components
             List<Point3d> points = new List<Point3d>();
             if (!DA.GetDataList(2, points))
                 return;
+            List<Vector3d> normals = new List<Vector3d>();
+            DA.GetDataList(3, normals);
             GH_Structure<GH_Point> targets = new GH_Structure<GH_Point>();
-            if (!DA.GetDataTree(3, out targets))
+            if (!DA.GetDataTree(4, out targets))
+                return;
+            angle = -1;
+            if (!DA.GetData(5, ref angle))
                 return;
             bool run = false;
-            if (!DA.GetData(4, ref run))
+            if (!DA.GetData(6, ref run))
                 return;
-
-
             if (!run)
                 return;
 
@@ -101,6 +108,8 @@ namespace GH.MiscToolbox.Components
             bool[][][] hitDataResults = new bool[Mt.Count][][];
             Point3d[][][] pointDataResults = new Point3d[Mt.Count][][];
 
+            bool checkNormals = normals != null && normals.Count == points.Count && angle > 0;
+
             for (int k = 0; k < Mt.Count; k++)
             {
                 jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
@@ -120,8 +129,17 @@ namespace GH.MiscToolbox.Components
                     for (int j = 0; j < targets[k].Count; j++)
                     {
                         //  Cast Ray
-                        Ray3d ray = new Ray3d(points[i], targets[k][j].Value - points[i]);
-                        jobs.Add(new Tuple<int, int, Ray3d, Mesh, int[], int>(i, j, ray, context, faceBarriers, k + 1));
+                        Vector3d direction = targets[k][j].Value - points[i];
+                        bool cast = true;
+                        if(checkNormals)
+                        {
+                            double a = Vector3d.VectorAngle(direction, normals[i]);
+                            cast = a < angle;
+                        }
+
+                        Ray3d ray = new Ray3d(points[i], direction);
+                        if(cast)
+                            jobs.Add(new Tuple<int, int, Ray3d, Mesh, int[], int>(i, j, ray, context, faceBarriers, k + 1));
                     }
                 }
 
@@ -164,6 +182,8 @@ namespace GH.MiscToolbox.Components
         private bool distDebug = false;
         private bool hitsDebug = false;
 
+        private bool includeThreshold = false;
+        private double angle;
         public double Average(bool[] data)
         {
 

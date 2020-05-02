@@ -221,7 +221,7 @@ namespace GH.MiscToolbox.Components.Utilities
                 // another thread, and therefore no data-races will occur. This is a red-neck
                 // approach which ALWAYS works if the size of the array can be known in advance
                 BoundingBox bb = GetBoundingBox(geo, _plane);
-                rotated_volumes[i] = bb.ToBrep().GetVolume();//.Volume;
+                rotated_volumes[i] = bb.Volume;
             });
 
             // now find that index (degree of rotation) at which we had the smallest BoundingBox

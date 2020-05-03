@@ -6,13 +6,13 @@ using Rhino.Geometry;
 
 namespace GH.MiscToolbox.Components.Utilities
 {
-    public class InscribedRectangleComponent : GH_Component
+    public class InscribedRectangleHelperComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the InscribedRectangleComponent class.
         /// </summary>
-        public InscribedRectangleComponent()
-          : base("Inscribed Rectangle", "InsRect",
+        public InscribedRectangleHelperComponent()
+          : base("Inscribed Rectangle Helper", "InsRectHelp",
               "Description",
               "MiscToolbox", "Utilities")
         {

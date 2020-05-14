@@ -91,8 +91,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="api\index.md" />
     <None Include="app.config" />
+    <None Include="articles\intro.md" />
+    <None Include="articles\toc.md" />
+    <None Include="docfx.json" />
+    <None Include="index.md" />
     <None Include="packages.config" />
+    <None Include="toc.yml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -123,6 +129,8 @@ Erase "$(TargetPath)"</PostBuildEvent>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\RhinoCommon.6.25.20114.5271\build\net45\RhinoCommon.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RhinoCommon.6.25.20114.5271\build\net45\RhinoCommon.targets'))" />
     <Error Condition="!Exists('..\packages\Grasshopper.6.25.20114.5271\build\net45\Grasshopper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grasshopper.6.25.20114.5271\build\net45\Grasshopper.targets'))" />
+    <Error Condition="!Exists('..\packages\docfx.console.2.53.1\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.53.1\build\docfx.console.targets'))" />
   </Target>
   <Import Project="..\packages\Grasshopper.6.25.20114.5271\build\net45\Grasshopper.targets" Condition="Exists('..\packages\Grasshopper.6.25.20114.5271\build\net45\Grasshopper.targets')" />
+  <Import Project="..\packages\docfx.console.2.53.1\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.53.1\build\docfx.console.targets')" />
 </Project>

@@ -1,0 +1,980 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MinVolumeBoundingBoxComponent
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MinVolumeBoundingBoxComponent
+   ">
+    <meta name="generator" content="docfx 2.53.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent">
+  
+  
+  <h1 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent" class="text-break">Class MinVolumeBoundingBoxComponent
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Grasshopper.Kernel.GH_InstanceDescription</span></div>
+    <div class="level2"><span class="xref">Grasshopper.Kernel.GH_DocumentObject</span></div>
+    <div class="level3"><span class="xref">Grasshopper.Kernel.GH_ActiveObject</span></div>
+    <div class="level4"><span class="xref">Grasshopper.Kernel.GH_Component</span></div>
+    <div class="level5"><span class="xref">MinVolumeBoundingBoxComponent</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Grasshopper.Kernel.IGH_Component</span></div>
+    <div><span class="xref">Grasshopper.Kernel.IGH_ActiveObject</span></div>
+    <div><span class="xref">Grasshopper.Kernel.IGH_DocumentObject</span></div>
+    <div><span class="xref">Grasshopper.Kernel.IGH_InstanceDescription</span></div>
+    <div><span class="xref">GH_IO.GH_ISerializable</span></div>
+    <div><span class="xref">Grasshopper.Kernel.IGH_PreviewObject</span></div>
+    <div><span class="xref">Grasshopper.Kernel.IGH_BakeAwareObject</span></div>
+    <div><span class="xref">Grasshopper.Kernel.IGH_RenderAwareObject</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.PostConstructor()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.CreateAttributes()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.AssignInitCodeToInputParameter(System.Int32, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.IsolateObject()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.ClearRuntimeMessages()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.RuntimeMessages(Grasshopper.Kernel.GH_RuntimeMessageLevel)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.DependsOn(Grasshopper.Kernel.IGH_ActiveObject)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.AddedToDocument(Grasshopper.Kernel.GH_Document)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.RemovedFromDocument(Grasshopper.Kernel.GH_Document)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.MovedBetweenDocuments(Grasshopper.Kernel.GH_Document, Grasshopper.Kernel.GH_Document)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.DocumentContextChanged(Grasshopper.Kernel.GH_Document, Grasshopper.Kernel.GH_DocumentContext)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.RegisterRemoteIDs(Grasshopper.Kernel.GH_GuidTable)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.AppendAdditionalComponentMenuItems(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.HtmlHelp_Source()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.GenerateDefaultHTML()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.GenerateParameterHelp()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.GenerateParameterHelp(Grasshopper.Kernel.IGH_Param)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.ExpireDownStreamObjects()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.ClearData()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.CollectData()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.ComputeData()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.BeforeSolveInstance()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.AfterSolveInstance()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.DocumentTolerance()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.DocumentAngleTolerance()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_PreviewObject.DrawViewportMeshes(Grasshopper.Kernel.IGH_PreviewArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_PreviewObject.DrawViewportWires(Grasshopper.Kernel.IGH_PreviewArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_BakeAwareObject.BakeGeometry(Rhino.RhinoDoc, System.Collections.Generic.List&lt;System.Guid&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_BakeAwareObject.BakeGeometry(Rhino.RhinoDoc, Rhino.DocObjects.ObjectAttributes, System.Collections.Generic.List&lt;System.Guid&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_Component.InConstructor</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_Component.Params</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.RuntimeMessageLevel</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.InstanceDescription</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.IsDataProvider</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_Component.Message</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.HelpDescription</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_Component.RunCount</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_Component.MasterParameterIndex</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_Component.IsValidMasterParameterIndex</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Locked</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.ProcessorTime</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_PreviewObject.Hidden</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_PreviewObject.IsPreviewCapable</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_PreviewObject.ClippingBox</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_Component.Grasshopper.Kernel.IGH_BakeAwareObject.IsBakeCapable</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.ExpireSolution(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Grasshopper.Kernel.IGH_ActiveObject.SDKCompliancy(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Grasshopper.Kernel.IGH_ActiveObject.AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.AppendMenuItems(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Menu_AppendRuntimeMessages(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Menu_AppendEnableItem(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Menu_AppendPreviewItem(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Menu_AppendBakeItem(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Grasshopper.Kernel.IGH_ActiveObject.Phase</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.Grasshopper.Kernel.IGH_ActiveObject.MutableNickName</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_ActiveObject.IconCapableUI</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.m_attributes</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnObjectChanged(Grasshopper.Kernel.GH_ObjectEventType)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnObjectChanged(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnObjectChanged(Grasshopper.Kernel.GH_ObjectEventType, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnObjectChanged(System.String, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnObjectChanged(Grasshopper.Kernel.GH_ObjectChangedEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnAttributesChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnSolutionExpired(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnDisplayExpired(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnPreviewExpired(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.ExpirePreview(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.OnPingDocument()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.TriggerAutoSave()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.TriggerAutoSave(Grasshopper.Kernel.GH_AutoSaveTrigger)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.TriggerAutoSave(System.Guid)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.TriggerAutoSave(Grasshopper.Kernel.GH_AutoSaveTrigger, System.Guid)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.RecordUndoEvent(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.RecordUndoEvent(System.String, Grasshopper.Kernel.Undo.IGH_UndoAction)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.RecordUndoEvent(Grasshopper.Kernel.Undo.GH_UndoRecord)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendSeparator(System.Windows.Forms.ToolStrip)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String, System.EventHandler)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String, System.EventHandler, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String, System.EventHandler, System.Boolean, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String, System.EventHandler, System.Drawing.Image)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String, System.EventHandler, System.Drawing.Image, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendItem(System.Windows.Forms.ToolStrip, System.String, System.EventHandler, System.Drawing.Image, System.Boolean, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_MoveItem(System.Windows.Forms.ToolStripItem, System.String[])</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_MoveItem(System.Windows.Forms.ToolStripItem, System.Boolean, System.String[])</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendTextItem(System.Windows.Forms.ToolStripDropDown, System.String, Grasshopper.GUI.GH_MenuTextBox.KeyDownEventHandler, Grasshopper.GUI.GH_MenuTextBox.TextChangedEventHandler, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendTextItem(System.Windows.Forms.ToolStripDropDown, System.String, Grasshopper.GUI.GH_MenuTextBox.KeyDownEventHandler, Grasshopper.GUI.GH_MenuTextBox.TextChangedEventHandler, System.Boolean, System.Int32, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendDigitScrollerItem(System.Windows.Forms.ToolStripDropDown, System.Decimal, System.Decimal, System.Decimal, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendCustomItem(System.Windows.Forms.ToolStripDropDown, System.Windows.Forms.Control)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendCustomItem(System.Windows.Forms.ToolStripDropDown, System.Windows.Forms.Control, Grasshopper.GUI.GH_MenuCustomControl.KeyDownEventHandler)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendCustomItem(System.Windows.Forms.ToolStripDropDown, System.Windows.Forms.Control, Grasshopper.GUI.GH_MenuCustomControl.KeyDownEventHandler, System.Boolean, System.Int32, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendColourPicker(System.Windows.Forms.ToolStripDropDown, System.Drawing.Color, Grasshopper.Kernel.GH_DocumentObject.ColourEventHandler)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendObjectNameEx(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendObjectName(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendPublish(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Menu_AppendObjectHelp(System.Windows.Forms.ToolStripDropDown)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.DestroyIconCache()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.SetIconOverride(System.Drawing.Bitmap)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.ValuesChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.GetValue(System.String, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.GetValue(System.String, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.GetValue(System.String, System.Double)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.GetValue(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.GetValue(System.String, System.Drawing.Color)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.SetValue(System.String, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.SetValue(System.String, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.SetValue(System.String, System.Double)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.SetValue(System.String, System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.SetValue(System.String, System.Drawing.Color)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.Attributes</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.Obsolete</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.Exposure</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.Icon_24x24</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.Icon_24x24_Locked</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.IconDisplayMode</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.ObjectChanged</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.AttributesChanged</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.SolutionExpired</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.DisplayExpired</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.PreviewExpired</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.PingDocument</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.CopyFrom(Grasshopper.Kernel.IGH_InstanceDescription)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.NewInstanceGuid()</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.NewInstanceGuid(System.Guid)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.WriteFull(GH_IO.Serialization.GH_IWriter)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.ReadFull(GH_IO.Serialization.GH_IReader)</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.Name</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.NickName</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.Description</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.Keywords</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.Category</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.SubCategory</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.HasCategory</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.HasSubCategory</span>
+    </div>
+    <div>
+      <span class="xref">Grasshopper.Kernel.GH_InstanceDescription.Grasshopper.Kernel.IGH_InstanceDescription.InstanceGuid</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GH.MiscToolbox.Components.Utilities.html">GH.MiscToolbox.Components.Utilities</a></h6>
+  <h6><strong>Assembly</strong>: GH.MiscToolbox.dll</h6>
+  <h5 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MinVolumeBoundingBoxComponent : GH_Component, IGH_Component, IGH_ActiveObject, IGH_DocumentObject, IGH_InstanceDescription, GH_ISerializable, IGH_PreviewObject, IGH_BakeAwareObject, IGH_RenderAwareObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent__ctor.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L29">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent__ctor_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.#ctor*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent__ctor" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.#ctor">MinVolumeBoundingBoxComponent()</h4>
+  <div class="markdown level1 summary"><p>Heavely based on this discussion: <a href="https://discourse.mcneel.com/t/minimum-oriented-bounding-box-implementation-in-grasshopper-python-script-node/64344/61">https://discourse.mcneel.com/t/minimum-oriented-bounding-box-implementation-in-grasshopper-python-script-node/64344/61</a>
+Original Author Ilja Asanovic (Python)<br>Parallel C# version, code refactored: RIL
+Thanks Mitch and Ril</p>
+<p>Ported as a Library / Features: Stamatios Psarras</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MinVolumeBoundingBoxComponent()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_ComponentGuid.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.ComponentGuid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L296">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_ComponentGuid_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.ComponentGuid*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_ComponentGuid" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.ComponentGuid">ComponentGuid</h4>
+  <div class="markdown level1 summary"><p>Gets the unique ID for this component. Do not change this ID after release.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Guid ComponentGuid { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_DocumentObject.Grasshopper.Kernel.IGH_DocumentObject.ComponentGuid</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Icon.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Icon%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L283">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Icon_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Icon*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Icon" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Icon">Icon</h4>
+  <div class="markdown level1 summary"><p>Provides an Icon for the component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Bitmap Icon { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Bitmap</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_DocumentObject.Icon</span></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_AppendAdditionalMenuItems_System_Windows_Forms_ToolStripDropDown_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.AppendAdditionalMenuItems(System.Windows.Forms.ToolStripDropDown)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L95">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_AppendAdditionalMenuItems_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.AppendAdditionalMenuItems*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_AppendAdditionalMenuItems_System_Windows_Forms_ToolStripDropDown_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.AppendAdditionalMenuItems(System.Windows.Forms.ToolStripDropDown)">AppendAdditionalMenuItems(ToolStripDropDown)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void AppendAdditionalMenuItems(ToolStripDropDown menu)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.ToolStripDropDown</span></td>
+        <td><span class="parametername">menu</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_Component.AppendAdditionalMenuItems(System.Windows.Forms.ToolStripDropDown)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_GetBoundingBoxWorld_Rhino_Geometry_GeometryBase_Rhino_Geometry_Plane_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.GetBoundingBoxWorld(Rhino.Geometry.GeometryBase%2CRhino.Geometry.Plane)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L254">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_GetBoundingBoxWorld_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.GetBoundingBoxWorld*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_GetBoundingBoxWorld_Rhino_Geometry_GeometryBase_Rhino_Geometry_Plane_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.GetBoundingBoxWorld(Rhino.Geometry.GeometryBase,Rhino.Geometry.Plane)">GetBoundingBoxWorld(GeometryBase, Plane)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BoundingBox GetBoundingBoxWorld(GeometryBase geometryBase, Plane plane)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Rhino.Geometry.GeometryBase</span></td>
+        <td><span class="parametername">geometryBase</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Rhino.Geometry.Plane</span></td>
+        <td><span class="parametername">plane</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Rhino.Geometry.BoundingBox</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Read_GH_IO_Serialization_GH_IReader_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Read(GH_IO.Serialization.GH_IReader)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L87">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Read_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Read*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Read_GH_IO_Serialization_GH_IReader_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Read(GH_IO.Serialization.GH_IReader)">Read(GH_IReader)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Read(GH_IReader reader)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GH_IO.Serialization.GH_IReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_Component.Read(GH_IO.Serialization.GH_IReader)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_RegisterInputParams_Grasshopper_Kernel_GH_Component_GH_InputParamManager_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L39">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_RegisterInputParams_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.RegisterInputParams*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_RegisterInputParams_Grasshopper_Kernel_GH_Component_GH_InputParamManager_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)">RegisterInputParams(GH_Component.GH_InputParamManager)</h4>
+  <div class="markdown level1 summary"><p>Registers all the input parameters for this component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Grasshopper.Kernel.GH_Component.GH_InputParamManager</span></td>
+        <td><span class="parametername">pManager</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_Component.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_RegisterOutputParams_Grasshopper_Kernel_GH_Component_GH_OutputParamManager_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L49">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_RegisterOutputParams_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.RegisterOutputParams*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_RegisterOutputParams_Grasshopper_Kernel_GH_Component_GH_OutputParamManager_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)">RegisterOutputParams(GH_Component.GH_OutputParamManager)</h4>
+  <div class="markdown level1 summary"><p>Registers all the output parameters for this component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Grasshopper.Kernel.GH_Component.GH_OutputParamManager</span></td>
+        <td><span class="parametername">pManager</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_Component.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_SolveInstance_Grasshopper_Kernel_IGH_DataAccess_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L58">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_SolveInstance_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.SolveInstance*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_SolveInstance_Grasshopper_Kernel_IGH_DataAccess_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)">SolveInstance(IGH_DataAccess)</h4>
+  <div class="markdown level1 summary"><p>This is the method that actually does the work.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void SolveInstance(IGH_DataAccess DA)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Grasshopper.Kernel.IGH_DataAccess</span></td>
+        <td><span class="parametername">DA</span></td>
+        <td><p>The DA object is used to retrieve from inputs and store in outputs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_Component.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Write_GH_IO_Serialization_GH_IWriter_.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Write(GH_IO.Serialization.GH_IWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L79">View Source</a>
+  </span>
+  <a id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Write_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Write*"></a>
+  <h4 id="GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent_Write_GH_IO_Serialization_GH_IWriter_" data-uid="GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.Write(GH_IO.Serialization.GH_IWriter)">Write(GH_IWriter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Write(GH_IWriter writer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GH_IO.Serialization.GH_IWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Grasshopper.Kernel.GH_Component.Write(GH_IO.Serialization.GH_IWriter)</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_Component</span>
+  </div>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_ActiveObject</span>
+  </div>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_DocumentObject</span>
+  </div>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_InstanceDescription</span>
+  </div>
+  <div>
+      <span class="xref">GH_IO.GH_ISerializable</span>
+  </div>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_PreviewObject</span>
+  </div>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_BakeAwareObject</span>
+  </div>
+  <div>
+      <span class="xref">Grasshopper.Kernel.IGH_RenderAwareObject</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/psarras/GH-Misc-Toolbox/new/doc_site/apiSpec/new?filename=GH_MiscToolbox_Components_Utilities_MinVolumeBoundingBoxComponent.md&amp;value=---%0Auid%3A%20GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/psarras/GH-Misc-Toolbox/blob/doc_site/GH.MiscToolbox/GH.MiscToolbox/Components/Utilities/MinVolumeBoundingBoxComponent.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

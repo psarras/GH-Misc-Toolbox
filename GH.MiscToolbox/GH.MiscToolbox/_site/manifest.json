@@ -1,0 +1,560 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Stamatios.Psarras/Desktop/Dropbox/Projects/GH.MiscToolbox_Rhino6/GH.MiscToolbox/GH.MiscToolbox",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "MVOc2TAaerjBrU14WN0UcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "9bCOp/UZ8t1h8rB3TByRNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "SFhQKCQx99s0mkqzF1DAaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.BoundingBoxExtentions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.BoundingBoxExtentions.html",
+          "hash": "0xn1q0qTmR35RphsmpevQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Analysis.MeshRayInteresectionParallelComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Analysis.MeshRayInteresectionParallelComponent.html",
+          "hash": "ULrEtZuCS9dldbPNMXWaSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Analysis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Analysis.html",
+          "hash": "29AMYuELQdi+wWwLvKH0qg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Analytics.PermutationsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Analytics.PermutationsComponent.html",
+          "hash": "IgjbacxGkIQTEZENns/5Pg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Analytics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Analytics.html",
+          "hash": "xc3fK591+E76jZb0SNixhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.ArrayGeometryComponent.TypeOfArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.ArrayGeometryComponent.TypeOfArray.html",
+          "hash": "SXbSD7sC2p9PzrR4Foka2Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.ArrayGeometryComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.ArrayGeometryComponent.html",
+          "hash": "uOuqJpn6w8HqrY8ibH1dVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.CenterBoxComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.CenterBoxComponent.html",
+          "hash": "3xq6w8JrCml79QPJKzEOyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.ConstrainComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.ConstrainComponent.html",
+          "hash": "eeSr797NXe3ht5fvruLfUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.CreateEnumerationComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.CreateEnumerationComponent.html",
+          "hash": "C+I73z6E+oPBcunKxjs5tQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.DeconstructPathComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.DeconstructPathComponent.html",
+          "hash": "YuEovXEO7ZNfRI+CdhEJZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.EvaluateDomainComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.EvaluateDomainComponent.html",
+          "hash": "u+/LA+Bwkn7DOZ0u8r/4qA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.FormatPercentageComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.FormatPercentageComponent.html",
+          "hash": "0cyLQV6jMo3a+Itc5BK9DQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.GetBranchComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.GetBranchComponent.html",
+          "hash": "BY3U84v9OG0DszfgWjmg4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.IntegerDivisorsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.IntegerDivisorsComponent.html",
+          "hash": "W8zxhc/RN1UixjW2Ga/k3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.JoinPathComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.JoinPathComponent.html",
+          "hash": "9WQdGV+ZTOev92IGQFzPGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.LengthDomainComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.LengthDomainComponent.html",
+          "hash": "1zXD+OPD9Cev8BkyQ124Lw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.LoadArchiveComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.LoadArchiveComponent.html",
+          "hash": "mXl9zzaDOtB0+9JNiMXcpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.MassAndOrComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.MassAndOrComponent.html",
+          "hash": "6qUrvtr++ZSzVTnH5M8e2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.MeshPointIntersectionParallelComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.MeshPointIntersectionParallelComponent.html",
+          "hash": "P+fcbEKpac26bxO0tKcrqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.NormalizeComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.NormalizeComponent.html",
+          "hash": "vFIfuu5moH7yaIdy0wBnMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.RandomReduceComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.RandomReduceComponent.html",
+          "hash": "iDY7LK4oHpPTMdagL6LdCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.RelativePathsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.RelativePathsComponent.html",
+          "hash": "1GnZpJQaoLBdxdsX6yg89A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.RoundValuesComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.RoundValuesComponent.html",
+          "hash": "fABF4CSRx9n5baDtmhhmXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.SaveArchiveComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.SaveArchiveComponent.html",
+          "hash": "1I97E01ZwftxrL9i3eG7sQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.SymmetricalDomainComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.SymmetricalDomainComponent.html",
+          "hash": "GvpU3CSNhnQblU5WQfUDrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.CenterLineComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Utilities.CenterLineComponent.html",
+          "hash": "6Sd8/eKoYbDLgb2Q2Ox10A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html",
+          "hash": "oC5xUdFqatRrH7mAwDgJVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.html",
+          "hash": "Xc4zWI6qYQ7Wsm94sqGoNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.RebaseRectangle3dComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Utilities.RebaseRectangle3dComponent.html",
+          "hash": "COP0oXTcffaPb6svb/jP6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.Utilities.html",
+          "hash": "T6FXxQyQguCkXKwyxdH5gA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.ValueStatsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.ValueStatsComponent.html",
+          "hash": "tU3PMjuCCIy6cNr8tNgI0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.Components.html",
+          "hash": "wG+F4NrCqiMr/OXzEyOdzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.GHStructureExtentions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.GHStructureExtentions.html",
+          "hash": "qFr3HjX8WF+bpbF/6t4URA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.MiscToolboxInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.MiscToolboxInfo.html",
+          "hash": "9PF5oUrLJBucinmyUKt3qA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GH.MiscToolbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GH.MiscToolbox.html",
+          "hash": "4itIea6cvctLKxq30BjGCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "iN9LyVL41GH1104/iBeycQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "G2AoE5T/2VarbHvzLEo4TQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 36,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

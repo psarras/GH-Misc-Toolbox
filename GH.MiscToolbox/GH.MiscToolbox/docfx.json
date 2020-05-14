@@ -10,7 +10,7 @@
           "exclude": [
             "**/obj/**",
             "**/bin/**",
-            "docs/**"
+            "../../docs/**"
           ]
         }
       ],
@@ -34,7 +34,7 @@
         ],
         "exclude": [
           "obj/**",
-          "docs/**"
+          "../../docs/**"
         ]
       }
     ],
@@ -45,7 +45,7 @@
         ],
         "exclude": [
           "obj/**",
-          "docs/**"
+          "../../docs/**"
         ]
       }
     ],
@@ -56,11 +56,11 @@
         ],
         "exclude": [
           "obj/**",
-          "docs/**"
+          "../../docs/**"
         ]
       }
     ],
-    "dest": "docs",
+    "dest": "../../docs",
     "template": [
       "default"
     ]

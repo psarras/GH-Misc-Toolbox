@@ -2449,135 +2449,135 @@ references:
   isSpec: "True"
   fullName: GH.MiscToolbox.Components.Utilities.CenterLineComponent.SolveInstance
   nameWithType: CenterLineComponent.SolveInstance
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent
-  name: InscribedRectangleComponent
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html
-  commentId: T:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent
-  nameWithType: InscribedRectangleComponent
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.#ctor
-  name: InscribedRectangleComponent()
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent__ctor
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.#ctor
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.InscribedRectangleComponent()
-  nameWithType: InscribedRectangleComponent.InscribedRectangleComponent()
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.#ctor*
-  name: InscribedRectangleComponent
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent__ctor_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.#ctor
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent
+  name: InscribedRectangleHelperComponent
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html
+  commentId: T:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent
+  nameWithType: InscribedRectangleHelperComponent
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.#ctor
+  name: InscribedRectangleHelperComponent()
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent__ctor
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.#ctor
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.InscribedRectangleHelperComponent()
+  nameWithType: InscribedRectangleHelperComponent.InscribedRectangleHelperComponent()
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.#ctor*
+  name: InscribedRectangleHelperComponent
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent__ctor_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.#ctor
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.InscribedRectangleComponent
-  nameWithType: InscribedRectangleComponent.InscribedRectangleComponent
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area(System.Collections.Generic.List{Rhino.Geometry.Point3d})
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.InscribedRectangleHelperComponent
+  nameWithType: InscribedRectangleHelperComponent.InscribedRectangleHelperComponent
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area(System.Collections.Generic.List{Rhino.Geometry.Point3d})
   name: Area(List<Point3d>)
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_Area_System_Collections_Generic_List_Rhino_Geometry_Point3d__
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area(System.Collections.Generic.List{Rhino.Geometry.Point3d})
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_Area_System_Collections_Generic_List_Rhino_Geometry_Point3d__
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area(System.Collections.Generic.List{Rhino.Geometry.Point3d})
   name.vb: Area(List(Of Point3d))
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area(System.Collections.Generic.List<Rhino.Geometry.Point3d>)
-  fullName.vb: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area(System.Collections.Generic.List(Of Rhino.Geometry.Point3d))
-  nameWithType: InscribedRectangleComponent.Area(List<Point3d>)
-  nameWithType.vb: InscribedRectangleComponent.Area(List(Of Point3d))
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area*
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area(System.Collections.Generic.List<Rhino.Geometry.Point3d>)
+  fullName.vb: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area(System.Collections.Generic.List(Of Rhino.Geometry.Point3d))
+  nameWithType: InscribedRectangleHelperComponent.Area(List<Point3d>)
+  nameWithType.vb: InscribedRectangleHelperComponent.Area(List(Of Point3d))
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area*
   name: Area
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_Area_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_Area_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Area
-  nameWithType: InscribedRectangleComponent.Area
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.ComponentGuid
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Area
+  nameWithType: InscribedRectangleHelperComponent.Area
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.ComponentGuid
   name: ComponentGuid
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_ComponentGuid
-  commentId: P:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.ComponentGuid
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.ComponentGuid
-  nameWithType: InscribedRectangleComponent.ComponentGuid
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.ComponentGuid*
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_ComponentGuid
+  commentId: P:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.ComponentGuid
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.ComponentGuid
+  nameWithType: InscribedRectangleHelperComponent.ComponentGuid
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.ComponentGuid*
   name: ComponentGuid
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_ComponentGuid_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.ComponentGuid
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_ComponentGuid_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.ComponentGuid
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.ComponentGuid
-  nameWithType: InscribedRectangleComponent.ComponentGuid
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle(Rhino.Geometry.Curve,Rhino.Geometry.Curve,System.Double@,Rhino.Geometry.Polyline@)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.ComponentGuid
+  nameWithType: InscribedRectangleHelperComponent.ComponentGuid
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle(Rhino.Geometry.Curve,Rhino.Geometry.Curve,System.Double@,Rhino.Geometry.Polyline@)
   name: GetLargestRectangle(Curve, Curve, out Double, out Polyline)
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_GetLargestRectangle_Rhino_Geometry_Curve_Rhino_Geometry_Curve_System_Double__Rhino_Geometry_Polyline__
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle(Rhino.Geometry.Curve,Rhino.Geometry.Curve,System.Double@,Rhino.Geometry.Polyline@)
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_GetLargestRectangle_Rhino_Geometry_Curve_Rhino_Geometry_Curve_System_Double__Rhino_Geometry_Polyline__
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle(Rhino.Geometry.Curve,Rhino.Geometry.Curve,System.Double@,Rhino.Geometry.Polyline@)
   name.vb: GetLargestRectangle(Curve, Curve, ByRef Double, ByRef Polyline)
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle(Rhino.Geometry.Curve, Rhino.Geometry.Curve, out System.Double, out Rhino.Geometry.Polyline)
-  fullName.vb: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle(Rhino.Geometry.Curve, Rhino.Geometry.Curve, ByRef System.Double, ByRef Rhino.Geometry.Polyline)
-  nameWithType: InscribedRectangleComponent.GetLargestRectangle(Curve, Curve, out Double, out Polyline)
-  nameWithType.vb: InscribedRectangleComponent.GetLargestRectangle(Curve, Curve, ByRef Double, ByRef Polyline)
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle*
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle(Rhino.Geometry.Curve, Rhino.Geometry.Curve, out System.Double, out Rhino.Geometry.Polyline)
+  fullName.vb: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle(Rhino.Geometry.Curve, Rhino.Geometry.Curve, ByRef System.Double, ByRef Rhino.Geometry.Polyline)
+  nameWithType: InscribedRectangleHelperComponent.GetLargestRectangle(Curve, Curve, out Double, out Polyline)
+  nameWithType.vb: InscribedRectangleHelperComponent.GetLargestRectangle(Curve, Curve, ByRef Double, ByRef Polyline)
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle*
   name: GetLargestRectangle
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_GetLargestRectangle_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_GetLargestRectangle_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.GetLargestRectangle
-  nameWithType: InscribedRectangleComponent.GetLargestRectangle
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Icon
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.GetLargestRectangle
+  nameWithType: InscribedRectangleHelperComponent.GetLargestRectangle
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Icon
   name: Icon
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_Icon
-  commentId: P:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Icon
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Icon
-  nameWithType: InscribedRectangleComponent.Icon
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Icon*
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_Icon
+  commentId: P:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Icon
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Icon
+  nameWithType: InscribedRectangleHelperComponent.Icon
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Icon*
   name: Icon
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_Icon_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Icon
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_Icon_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Icon
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.Icon
-  nameWithType: InscribedRectangleComponent.Icon
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.Icon
+  nameWithType: InscribedRectangleHelperComponent.Icon
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)
   name: RegisterInputParams(GH_Component.GH_InputParamManager)
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_RegisterInputParams_Grasshopper_Kernel_GH_Component_GH_InputParamManager_
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)
-  nameWithType: InscribedRectangleComponent.RegisterInputParams(GH_Component.GH_InputParamManager)
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterInputParams*
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_RegisterInputParams_Grasshopper_Kernel_GH_Component_GH_InputParamManager_
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterInputParams(Grasshopper.Kernel.GH_Component.GH_InputParamManager)
+  nameWithType: InscribedRectangleHelperComponent.RegisterInputParams(GH_Component.GH_InputParamManager)
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterInputParams*
   name: RegisterInputParams
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_RegisterInputParams_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterInputParams
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_RegisterInputParams_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterInputParams
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterInputParams
-  nameWithType: InscribedRectangleComponent.RegisterInputParams
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterInputParams
+  nameWithType: InscribedRectangleHelperComponent.RegisterInputParams
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
   name: RegisterOutputParams(GH_Component.GH_OutputParamManager)
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_RegisterOutputParams_Grasshopper_Kernel_GH_Component_GH_OutputParamManager_
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
-  nameWithType: InscribedRectangleComponent.RegisterOutputParams(GH_Component.GH_OutputParamManager)
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterOutputParams*
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_RegisterOutputParams_Grasshopper_Kernel_GH_Component_GH_OutputParamManager_
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterOutputParams(Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
+  nameWithType: InscribedRectangleHelperComponent.RegisterOutputParams(GH_Component.GH_OutputParamManager)
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterOutputParams*
   name: RegisterOutputParams
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_RegisterOutputParams_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterOutputParams
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_RegisterOutputParams_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterOutputParams
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RegisterOutputParams
-  nameWithType: InscribedRectangleComponent.RegisterOutputParams
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RotateCurve(Rhino.Geometry.Curve,System.Double)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RegisterOutputParams
+  nameWithType: InscribedRectangleHelperComponent.RegisterOutputParams
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RotateCurve(Rhino.Geometry.Curve,System.Double)
   name: RotateCurve(Curve, Double)
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_RotateCurve_Rhino_Geometry_Curve_System_Double_
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RotateCurve(Rhino.Geometry.Curve,System.Double)
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RotateCurve(Rhino.Geometry.Curve, System.Double)
-  nameWithType: InscribedRectangleComponent.RotateCurve(Curve, Double)
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RotateCurve*
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_RotateCurve_Rhino_Geometry_Curve_System_Double_
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RotateCurve(Rhino.Geometry.Curve,System.Double)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RotateCurve(Rhino.Geometry.Curve, System.Double)
+  nameWithType: InscribedRectangleHelperComponent.RotateCurve(Curve, Double)
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RotateCurve*
   name: RotateCurve
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_RotateCurve_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RotateCurve
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_RotateCurve_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RotateCurve
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.RotateCurve
-  nameWithType: InscribedRectangleComponent.RotateCurve
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.RotateCurve
+  nameWithType: InscribedRectangleHelperComponent.RotateCurve
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)
   name: SolveInstance(IGH_DataAccess)
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_SolveInstance_Grasshopper_Kernel_IGH_DataAccess_
-  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)
-  nameWithType: InscribedRectangleComponent.SolveInstance(IGH_DataAccess)
-- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.SolveInstance*
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_SolveInstance_Grasshopper_Kernel_IGH_DataAccess_
+  commentId: M:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.SolveInstance(Grasshopper.Kernel.IGH_DataAccess)
+  nameWithType: InscribedRectangleHelperComponent.SolveInstance(IGH_DataAccess)
+- uid: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.SolveInstance*
   name: SolveInstance
-  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleComponent_SolveInstance_
-  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.SolveInstance
+  href: api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html#GH_MiscToolbox_Components_Utilities_InscribedRectangleHelperComponent_SolveInstance_
+  commentId: Overload:GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.SolveInstance
   isSpec: "True"
-  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.SolveInstance
-  nameWithType: InscribedRectangleComponent.SolveInstance
+  fullName: GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.SolveInstance
+  nameWithType: InscribedRectangleHelperComponent.SolveInstance
 - uid: GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent
   name: MinVolumeBoundingBoxComponent
   href: api/GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.html

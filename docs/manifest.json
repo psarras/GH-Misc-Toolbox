@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/Stamatios.Psarras/Desktop/Dropbox/Projects/GH.MiscToolbox_Rhino6/GH.MiscToolbox/GH.MiscToolbox",
+  "source_base_path": "C:/Users/Stamatios.Psarras/Desktop/Dropbox/Projects/GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "MVOc2TAaerjBrU14WN0UcQ=="
+          "hash": "ZTo7dOiMQqmUosq54EYcHg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "9bCOp/UZ8t1h8rB3TByRNQ=="
+          "hash": "8ACMeoADIEZB2xyuR0cQ2g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "SFhQKCQx99s0mkqzF1DAaA=="
+          "hash": "5xKTx1GKZUdwFstGzPi1cw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.BoundingBoxExtentions.html",
-          "hash": "0xn1q0qTmR35RphsmpevQA=="
+          "hash": "+Ng+oBPalZ909WqtMs/rjg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.Analysis.MeshRayInteresectionParallelComponent.html",
-          "hash": "ULrEtZuCS9dldbPNMXWaSw=="
+          "hash": "7HDSG1nMyWD4+0ZziYBApg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "29AMYuELQdi+wWwLvKH0qg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.Analytics.PermutationsComponent.html",
-          "hash": "IgjbacxGkIQTEZENns/5Pg=="
+          "hash": "HmCITYVNjIR9Ky8BSJD+7Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "xc3fK591+E76jZb0SNixhg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.ArrayGeometryComponent.TypeOfArray.html",
-          "hash": "SXbSD7sC2p9PzrR4Foka2Q=="
+          "hash": "U6M3YtV3Wzu8UrUnK10oxw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.ArrayGeometryComponent.html",
-          "hash": "uOuqJpn6w8HqrY8ibH1dVQ=="
+          "hash": "hkT4AniPMDG+17Yz5kDAhg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.CenterBoxComponent.html",
-          "hash": "3xq6w8JrCml79QPJKzEOyg=="
+          "hash": "hSQN1JBAhkKY7dIuIRZZWQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.ConstrainComponent.html",
-          "hash": "eeSr797NXe3ht5fvruLfUA=="
+          "hash": "DkLrt++n6uJh9/a/I7oFRQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.CreateEnumerationComponent.html",
-          "hash": "C+I73z6E+oPBcunKxjs5tQ=="
+          "hash": "PDH/vCqkx5MSaKtJgWvbNg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.DeconstructPathComponent.html",
-          "hash": "YuEovXEO7ZNfRI+CdhEJZA=="
+          "hash": "kqtafZq5yfCXGlMF0c1KJg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.EvaluateDomainComponent.html",
-          "hash": "u+/LA+Bwkn7DOZ0u8r/4qA=="
+          "hash": "t1vHQxXElGOeuQHBV2p/Ag=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.FormatPercentageComponent.html",
-          "hash": "0cyLQV6jMo3a+Itc5BK9DQ=="
+          "hash": "bYIOhYC1P+hlpqIg8/oz7A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.GetBranchComponent.html",
-          "hash": "BY3U84v9OG0DszfgWjmg4g=="
+          "hash": "SO1W+SHR4/MT84OPxH2zIA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.IntegerDivisorsComponent.html",
-          "hash": "W8zxhc/RN1UixjW2Ga/k3w=="
+          "hash": "SauIQLhuDHYSN7Zj9C+4Ow=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.JoinPathComponent.html",
-          "hash": "9WQdGV+ZTOev92IGQFzPGQ=="
+          "hash": "0q7OTe1/GmCJQYc+K2/pAQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.LengthDomainComponent.html",
-          "hash": "1zXD+OPD9Cev8BkyQ124Lw=="
+          "hash": "xfsaqEpulFlG+inU57UVKQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.LoadArchiveComponent.html",
-          "hash": "mXl9zzaDOtB0+9JNiMXcpg=="
+          "hash": "QDX0y/0G63ElXp4V/r9jGA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.MassAndOrComponent.html",
-          "hash": "6qUrvtr++ZSzVTnH5M8e2w=="
+          "hash": "cTjTX52MyKD5TP2RLfSovQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -285,10 +285,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.MeshPointIntersectionParallelComponent.html",
-          "hash": "P+fcbEKpac26bxO0tKcrqg=="
+          "hash": "5i2nIhZ0/y6Plhha/LKiUQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -297,10 +297,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.NormalizeComponent.html",
-          "hash": "vFIfuu5moH7yaIdy0wBnMQ=="
+          "hash": "PJAyqlquBiWvTnGHzYKRfg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -309,10 +309,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.RandomReduceComponent.html",
-          "hash": "iDY7LK4oHpPTMdagL6LdCA=="
+          "hash": "JJ8gpi5RWPPNgX07knWKsA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.RelativePathsComponent.html",
-          "hash": "1GnZpJQaoLBdxdsX6yg89A=="
+          "hash": "Z+p/BAwDS/nw0sXvIoDzXw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -333,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.RoundValuesComponent.html",
-          "hash": "fABF4CSRx9n5baDtmhhmXw=="
+          "hash": "CpkzXySl95A1E1QqYfyobQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -345,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.SaveArchiveComponent.html",
-          "hash": "1I97E01ZwftxrL9i3eG7sQ=="
+          "hash": "nnZ0igiMU/IMD/qqOnJlTg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.SymmetricalDomainComponent.html",
-          "hash": "GvpU3CSNhnQblU5WQfUDrg=="
+          "hash": "8NYVC8PIgKnawNz/xKPzgw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -369,22 +369,22 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.Utilities.CenterLineComponent.html",
-          "hash": "6Sd8/eKoYbDLgb2Q2Ox10A=="
+          "hash": "zQkB/xiaLlhdKfqJwDss0g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.yml",
+      "source_relative_path": "obj/api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GH.MiscToolbox.Components.Utilities.InscribedRectangleComponent.html",
-          "hash": "oC5xUdFqatRrH7mAwDgJVA=="
+          "relative_path": "api/GH.MiscToolbox.Components.Utilities.InscribedRectangleHelperComponent.html",
+          "hash": "yUMulPzQYcFyoRQk4NU5QQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -393,10 +393,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.Utilities.MinVolumeBoundingBoxComponent.html",
-          "hash": "Xc4zWI6qYQ7Wsm94sqGoNw=="
+          "hash": "nM8efY8SLe4/hYO7TA1IUQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -405,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.Utilities.RebaseRectangle3dComponent.html",
-          "hash": "COP0oXTcffaPb6svb/jP6g=="
+          "hash": "xfxB2IFTRwTzzOb7EX/ckw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -417,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.Utilities.html",
-          "hash": "T6FXxQyQguCkXKwyxdH5gA=="
+          "hash": "kEw3dnkhfpETzZZWWDf3kg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -429,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.Components.ValueStatsComponent.html",
-          "hash": "tU3PMjuCCIy6cNr8tNgI0Q=="
+          "hash": "AFL/3qkRJ5V97kOnOxaxGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -444,7 +444,7 @@
           "hash": "wG+F4NrCqiMr/OXzEyOdzg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -453,10 +453,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.GHStructureExtentions.html",
-          "hash": "qFr3HjX8WF+bpbF/6t4URA=="
+          "hash": "ScXjkdib8B68DqHtmWN+OA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -465,10 +465,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GH.MiscToolbox.MiscToolboxInfo.html",
-          "hash": "9PF5oUrLJBucinmyUKt3qA=="
+          "hash": "EF6cNnjtCghRP4C+emsvBQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -480,7 +480,7 @@
           "hash": "4itIea6cvctLKxq30BjGCg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -489,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "iN9LyVL41GH1104/iBeycQ=="
+          "hash": "FCFKT6yPfhhmj3Drpy0z3g=="
         }
       },
       "is_incremental": false,
@@ -511,23 +511,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 3
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 36,
-          "skipped_file_count": 36
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -540,8 +542,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

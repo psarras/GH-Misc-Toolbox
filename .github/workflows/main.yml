@@ -26,12 +26,18 @@ jobs:
       uses: microsoft/setup-msbuild@v1
     
     - name: Setup NuGet.exe for use with actions
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       uses: NuGet/setup-nuget@v1.0.2
     
     - name: Restore NuGet packages
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: nuget restore GH.MiscToolbox/GH.MiscToolbox.sln
     
     - name: Build the Solution
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: msbuild GH.MiscToolbox/GH.MiscToolbox.sln
       
     - name: Create Release

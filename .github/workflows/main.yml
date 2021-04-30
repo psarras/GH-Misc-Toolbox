@@ -69,12 +69,12 @@ jobs:
     - name: Build solution and generate NuGet package
       run: |
         $tag = $env:GITHUB_REF.Split("/")[-1]
-        nuget pack ./GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj
-      working-directory: GH.MiscToolbox
+        nuget pack GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj
+#       working-directory: GH.MiscToolbox
 
     - name: Push generated package to GitHub registry
       run: dotnet nuget push *.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-      working-directory: GH.MiscToolbox
+#       working-directory: GH.MiscToolbox
     
 #     - name: Publish Package
 #       uses: brandedoutcast/publish-nuget@v2.5.5

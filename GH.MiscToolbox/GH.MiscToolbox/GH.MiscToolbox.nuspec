@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>GH.MiscToolbox</id>
+    <id>GhMiscToolbox</id>
     <version>$version$</version>
     <title>GH.MiscToolbox</title>
     <authors>Stamatios Psarras</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <projectUrl>https://github.com/psarras/GH-Misc-Toolbox/</projectUrl>
     <description>A series of utility tools to be used with Grasshopper</description>
     <releaseNotes>Initial release</releaseNotes>
-    <copyright>$copyright$</copyright>
+    <copyright>Stamatios Psarras @ 2021</copyright>
     <tags>Grasshopper Utilities</tags>
   </metadata>
 </package>

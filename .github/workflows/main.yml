@@ -68,7 +68,7 @@ jobs:
     
     - name: Build solution and generate NuGet package
       run: |
-        $tag = $env:GITHUB_REF.Split("/")[-1]
+        $tag = $env:GITHUB_REF.Split("/")[-1].Split("v")[0]
         nuget pack GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj -Version $tag
 #       working-directory: GH.MiscToolbox
 

@@ -65,3 +65,13 @@ jobs:
         asset_path: ./GH.MiscToolbox/GH.MiscToolbox/bin/GH.MiscToolbox.gha
         asset_name: GH.MiscToolbox.gha
         asset_content_type: application/zip
+    
+    - name: Publish Package
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+          PROJECT_FILE_PATH: GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          # NuGet package id, used for version detection & defaults to project name
+          PACKAGE_NAME: GH.MiscToolbox
+          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
+          VERSION_STATIC: ${{ env.RELEASE_VERSION }}

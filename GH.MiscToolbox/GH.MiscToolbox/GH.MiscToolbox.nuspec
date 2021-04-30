@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>GH.MiscToolbox</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>GH.MiscToolbox</title>
     <authors>Stamatios Psarras</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>

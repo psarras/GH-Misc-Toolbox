@@ -1,14 +1,10 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: Release
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags: 'v*.*.*'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,16 +18,31 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
       
+    - name: get version from tag
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        echo $env:GITHUB_REF
+        $env:GITHUB_REF -match "refs/tags/(?<content>.*)"
+        $RELEASE_VERSION = $matches["content"]
+        echo "::set-env name=RELEASE_VERSION::$RELEASE_VERSION" 
+      
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
     
     - name: Setup NuGet.exe for use with actions
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       uses: NuGet/setup-nuget@v1.0.2
     
     - name: Restore NuGet packages
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: nuget restore GH.MiscToolbox/GH.MiscToolbox.sln
     
     - name: Build the Solution
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: msbuild GH.MiscToolbox/GH.MiscToolbox.sln
       
     - name: Create Release
@@ -40,8 +51,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: ${{ env.RELEASE_VERSION }}
+        release_name: GH-Misc-Toolbox
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -54,14 +65,13 @@ jobs:
         asset_path: ./GH.MiscToolbox/GH.MiscToolbox/bin/GH.MiscToolbox.gha
         asset_name: GH.MiscToolbox.gha
         asset_content_type: application/zip
-      
-      
-    #- name: Upload a Build Artifact
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #    # Artifact name
-    #    name: GH-MiscToolbox
-    #    # A file, directory or wildcard pattern that describes what to upload
-    #    path: GH.MiscToolbox/GH.MiscToolbox/bin/GH.MiscToolbox.gha
-
-
+    
+    - name: Publish Package
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+          PROJECT_FILE_PATH: GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          # NuGet package id, used for version detection & defaults to project name
+          PACKAGE_NAME: GH.MiscToolbox
+          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
+          VERSION_STATIC: ${{ env.RELEASE_VERSION }}

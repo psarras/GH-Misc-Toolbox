@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GH.MiscToolbox", "GH.MiscToolbox\GH.MiscToolbox.csproj", "{04AF3ED6-B216-47CC-A1F3-6A61922E3EF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyProject1", "MyProject1\MyProject1.csproj", "{BA49D3B8-A8C8-4C1E-BA36-BD3848907214}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{04AF3ED6-B216-47CC-A1F3-6A61922E3EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04AF3ED6-B216-47CC-A1F3-6A61922E3EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04AF3ED6-B216-47CC-A1F3-6A61922E3EF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA49D3B8-A8C8-4C1E-BA36-BD3848907214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA49D3B8-A8C8-4C1E-BA36-BD3848907214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA49D3B8-A8C8-4C1E-BA36-BD3848907214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA49D3B8-A8C8-4C1E-BA36-BD3848907214}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

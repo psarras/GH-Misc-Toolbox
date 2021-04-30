@@ -1,55 +1,17 @@
-<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <metadata>
-        <!-- Identifier that must be unique within the hosting gallery -->
-        <id>GH.MiscToolbox</id>
-
-        <!-- Package version number that is used when resolving dependencies -->
-        <version>0.0.5</version>
-
-        <!-- Authors contain text that appears directly on the gallery -->
-        <authors>Stamatios Psarras</authors>
-        
-         <!-- Project URL provides a link for the gallery -->
-        <projectUrl>https://github.com/psarras/GH-Misc-Toolbox/</projectUrl>
-
-         <!-- License information is displayed on the gallery -->
-        <license type="expression">MIT</license>
-        
-        <!-- Icon is used in Visual Studio's package manager UI -->
-        <!-- <icon>icon.png</icon> -->
-
-        <!-- 
-            If true, this value prompts the user to accept the license when
-            installing the package. 
-        -->
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-
-        <!-- Any details about this particular release -->
-        <!-- <releaseNotes></releaseNotes> -->
-
-        <!-- 
-            The description can be used in package manager UI. Note that the
-            nuget.org gallery uses information you add in the portal. 
-        -->
-        <description>Utility functions for general GH development</description>
-
-        <!-- Copyright information -->
-        <!-- <copyright></copyright> -->
-
-        <!-- Tags appear in the gallery and can be used for tag searches -->
-        <tags>grasshopper parametric design helper</tags>
-
-        <!-- Dependencies are automatically installed when the package is installed -->
-        <dependencies>
-            <dependency id="Grasshopper" version="9.34.21034.7001" />
-            <dependency id="RhinoCommon" version="9.34.21034.7001" />
-        </dependencies>
-    </metadata>
-
-    <!-- A readme.txt to display when the package is installed -->
-    <!-- <files>
-        <file src="readme.txt" target="" />
-        <file src="icon.png" target="" />
-    </files> -->
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Stamatios Psarras</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <description>A series of utility tools to be used with Grasshopper</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Grasshopper Utilities</tags>
+  </metadata>
 </package>

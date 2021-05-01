@@ -47,8 +47,12 @@ jobs:
     - name: Download Yak
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      run: curl -o yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
-      working-directory: GH.MiscToolbox/GH.MiscToolbox
+      run: curl -o GH.MiscToolbox/GH.MiscToolbox/yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
+      
+    - name: List yak
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: ls GH.MiscToolbox/GH.MiscToolbox
       
     - name: Build Yak
       env:

@@ -57,6 +57,6 @@ jobs:
     - name: Build Yak
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      run: ./GH.MiscToolbox/GH.MiscToolbox/yak.exe build
+      run: ..\..\yak.exe build
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

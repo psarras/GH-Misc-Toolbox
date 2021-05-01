@@ -48,9 +48,11 @@ jobs:
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: curl -o yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
+      working-directory: GH.MiscToolbox/GH.MiscToolbox
+      
     - name: Build Yak
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      run: yak.exe build
+      run: GH.MiscToolbox/GH.MiscToolbox/yak.exe build
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

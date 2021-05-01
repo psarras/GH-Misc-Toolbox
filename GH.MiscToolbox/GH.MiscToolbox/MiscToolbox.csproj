@@ -102,7 +102,7 @@
     <None Include="toc.yml" />
   </ItemGroup>
   <PropertyGroup>
-      <IsPackable>true</IsPackable>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -112,11 +112,15 @@
   </Target>
 
   -->
-    <Target Name="Pack">
-    </Target>
+  <Target Name="Pack">
+  </Target>
   <PropertyGroup>
     <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
-::Erase "$(TargetPath)"</PostBuildEvent>
+::Erase "$(TargetPath)"
+mkdir $(TargetDir)Yak
+Copy $(ProjectDir)\manifest.yml $(TargetDir)Yak\manifest.yml
+Copy "$(TargetPath)" "$(TargetDir)Yak\$(ProjectName).gha"
+COPY "$(SolutionDir)"..\"LICENSE" $(TargetDir)Yak\LICENSE</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>

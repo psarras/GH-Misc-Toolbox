@@ -1,0 +1,10 @@
+---
+name: MiscToolbox
+version: 0.0.4
+authors:
+- Stamatios Psarras
+description: A series of utility tools to be used with Grasshopper
+url: "https://github.com/psarras/GH-Misc-Toolbox/"
+keywords:
+- utilities
+icon_url: "https://raw.githubusercontent.com/psarras/GH-Misc-Toolbox/master/Icons/toolbox_icon_32_32.png"

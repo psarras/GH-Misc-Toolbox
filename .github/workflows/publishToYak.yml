@@ -17,14 +17,14 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
       
-    - name: get version from tag
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      run: |
-        echo $env:GITHUB_REF
-        $env:GITHUB_REF -match "refs/tags/(?<content>.*)"
-        $RELEASE_VERSION = $matches["content"]
-        echo "::set-env name=RELEASE_VERSION::$RELEASE_VERSION" 
+#     - name: get version from tag
+#       env:
+#         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+#       run: |
+#         echo $env:GITHUB_REF
+#         $env:GITHUB_REF -match "refs/tags/(?<content>.*)"
+#         $RELEASE_VERSION = $matches["content"]
+#         echo "::set-env name=RELEASE_VERSION::$RELEASE_VERSION" 
       
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
@@ -43,3 +43,14 @@ jobs:
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: msbuild GH.MiscToolbox/GH.MiscToolbox.sln
+      
+    - name: Download Yak
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: wget -O yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
+    - name: Build Yak
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: yak.exe build
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
+    

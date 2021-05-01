@@ -47,7 +47,7 @@ jobs:
     - name: Download Yak
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-      run: wget -O yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
+      run: curl -o yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
     - name: Build Yak
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'

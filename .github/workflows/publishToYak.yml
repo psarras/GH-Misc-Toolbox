@@ -25,6 +25,9 @@ jobs:
 #         $env:GITHUB_REF -match "refs/tags/(?<content>.*)"
 #         $RELEASE_VERSION = $matches["content"]
 #         echo "::set-env name=RELEASE_VERSION::$RELEASE_VERSION" 
+#         $env:GITHUB_REF -match "refs/tags/v(?<content>.*)"
+#         $NUMERICAL_VERSION = $matches["content"]
+#         echo "::set-env name=NUMERICAL_VERSION::$NUMERICAL_VERSION" 
       
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
@@ -53,18 +56,26 @@ jobs:
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: ls GH.MiscToolbox/GH.MiscToolbox
-      
+
+    - name: Change Manifest version
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        $filePath = 'manifest.yml'
+        $fileContent = (Get-Content $filePath)
+        echo $fileContent
+        $replacedFileContent = $fileContent
+        $replacedFileContent = $replacedFileContent.Replace('version: 0.0.0', ( 'version: ' + $env:NUMERICAL_VERSION))
+        echo $replacedFileContent
+        Out-File -FilePath $filePath -InputObject $replacedFileContent
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
+    
     - name: Build Yak
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: ..\..\yak.exe build
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
-      
-#     - name: Set Env Variable for Yak Token
-#       run: echo "Set Env Variable for Yak Token"
-#       env:
-#         YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
-    
+
     - name: Push new version to YAK
       run: |
         $YAK_FILE=$(ls *.yak)

@@ -59,4 +59,12 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: ..\..\yak.exe build
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
+      
+    - name: Set Env Variable for Yak Token
+      env:
+        YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
+    
+    - name: Push new version to YAK
+      run: ..\..\yak.exe push
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

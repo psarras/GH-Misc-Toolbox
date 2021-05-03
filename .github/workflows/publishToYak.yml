@@ -61,6 +61,7 @@ jobs:
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
       
     - name: Set Env Variable for Yak Token
+      run: echo "Hello"
       env:
         YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
     

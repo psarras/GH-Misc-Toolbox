@@ -67,8 +67,7 @@ jobs:
     
     - name: Push new version to YAK
       run: |
-        ..\..\yak.exe build >> -match "*Creating (?<content>.yak)*"
-        echo $matches["content"]
-        ..\..\yak.exe push $matches["content"]
+        YAK_FILE=$(ls *.yak)
+        ..\..\yak.exe push $YAK_FILE
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

@@ -68,6 +68,7 @@ jobs:
     - name: Push new version to YAK
       run: |
         YAK_FILE=$(ls *.yak)
+        echo $YAK_FILE
         ..\..\yak.exe push $YAK_FILE
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

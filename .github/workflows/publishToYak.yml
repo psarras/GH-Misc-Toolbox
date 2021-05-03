@@ -66,6 +66,8 @@ jobs:
         YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
     
     - name: Push new version to YAK
-      run: ..\..\yak.exe push *.yak
+      run: |
+        ..\..\yak.exe build || -match "*Creating (?<content>.yak)*"
+        ..\..\yak.exe push $matches["content"]
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

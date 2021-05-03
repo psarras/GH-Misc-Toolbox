@@ -61,11 +61,11 @@ jobs:
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
       
     - name: Set Env Variable for Yak Token
-      run: echo "Hello"
+      run: echo "Set Env Variable for Yak Token"
       env:
         YAK_TOKEN: ${{ secrets.YAK_TOKEN }}
     
     - name: Push new version to YAK
-      run: ..\..\yak.exe push
+      run: ..\..\yak.exe push *.yak
       working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     

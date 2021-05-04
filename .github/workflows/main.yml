@@ -29,11 +29,11 @@ jobs:
         $env:GITHUB_REF -match "refs/tags/v(?<content>.*)"
         $NUMERICAL_VERSION = $matches["content"]
         echo "::set-env name=NUMERICAL_VERSION::$NUMERICAL_VERSION"
-        $FULL_VERSION = "$NUMERICAL_VERSION.$env:GITHUB_RUN_ID"
+        $FULL_VERSION = "$NUMERICAL_VERSION.$env:GITHUB_RUN_NUMBER"
         echo "::set-env name=FULL_VERSION::$FULL_VERSION"
-        echo Release version = $RELEASE_VERSION
-        echo Numerical version = $NUMERICAL_VERSION
-        echo Full version = $FULL_VERSION
+        echo "Release version = $RELEASE_VERSION"
+        echo "Numerical version = $NUMERICAL_VERSION"
+        echo "Full version = $FULL_VERSION"
 
     - name: Change Assembly version
       env:
@@ -105,7 +105,7 @@ jobs:
     
     - name: Build solution and generate NuGet package
       run: |
-        nuget pack GH.MiscToolbox/GH.MiscToolbox/MiscToolbox.csproj -Version $NUMERICAL_VERSION
+        nuget pack GH.MiscToolbox/GH.MiscToolbox/MiscToolbox.csproj -Version $env:NUMERICAL_VERSION
 
     - name: Push generated package to GitHub registry
       run: dotnet nuget push *.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

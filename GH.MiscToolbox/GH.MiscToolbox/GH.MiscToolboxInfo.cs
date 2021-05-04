@@ -42,7 +42,7 @@ namespace GH.MiscToolbox
             get
             {
                 //Return a string identifying you or your company.
-                return "";
+                return "Stamatios Psarras";
             }
         }
         public override string AuthorContact
@@ -53,5 +53,8 @@ namespace GH.MiscToolbox
                 return "";
             }
         }
+
+        public override string Version => "0.0.0.0";
+        public override string AssemblyVersion => "0.0.*";
     }
 }

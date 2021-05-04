@@ -26,7 +26,40 @@ jobs:
         $env:GITHUB_REF -match "refs/tags/(?<content>.*)"
         $RELEASE_VERSION = $matches["content"]
         echo "::set-env name=RELEASE_VERSION::$RELEASE_VERSION" 
-      
+        $env:GITHUB_REF -match "refs/tags/v(?<content>.*)"
+        $NUMERICAL_VERSION = $matches["content"]
+        echo "::set-env name=NUMERICAL_VERSION::$NUMERICAL_VERSION"
+        $FULL_VERSION = "$env:NUMERICAL_VERSION.$env:GITHUB_RUN_ID"
+        echo "::set-env name=FULL_VERSION::$FULL_VERSION"
+
+    - name: Change Assembly version
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        $filePath = 'AssemblyInfo.cs'
+        $fileContent = (Get-Content $filePath)
+        echo $fileContent
+        $replacedFileContent = $fileContent
+        $replacedFileContent = $replacedFileContent.Replace('[assembly: AssemblyVersion("0.0.0.0")]', ( '[assembly: AssemblyVersion("' + $env:NUMERICAL_VERSION + '")]' ))
+        $replacedFileContent = $replacedFileContent.Replace('[assembly: AssemblyFileVersion("0.0.0.0")]', ( '[assembly: AssemblyFileVersion("' + $env:NUMERICAL_VERSION + '")]' ))
+        echo $replacedFileContent
+        Out-File -FilePath $filePath -InputObject $replacedFileContent
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/Properties
+    
+    - name: Change Grasshopper Info version
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        $filePath = 'GH.MiscToolboxInfo.cs'
+        $fileContent = (Get-Content $filePath)
+        echo $fileContent
+        $replacedFileContent = $fileContent
+        $replacedFileContent = $replacedFileContent.Replace('public override string Version => "0.0.0.0";', ( 'public override string Version => "' + $env:NUMERICAL_VERSION + '";' ))
+        $replacedFileContent = $replacedFileContent.Replace('public override string AssemblyVersion => "0.0.*";', ( 'public override string AssemblyVersion => "' + $env:NUMERICAL_VERSION + '";' ))
+        echo $replacedFileContent
+        Out-File -FilePath $filePath -InputObject $replacedFileContent
+      working-directory: GH.MiscToolbox/GH.MiscToolbox
+
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
     
@@ -55,6 +88,7 @@ jobs:
         release_name: GH-Misc-Toolbox
         draft: false
         prerelease: false
+    
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
@@ -70,18 +104,44 @@ jobs:
       run: |
         $tag = $env:GITHUB_REF.Split("/")[-1].Split("v")[1]
         nuget pack GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj -Version $tag
-#       working-directory: GH.MiscToolbox
 
     - name: Push generated package to GitHub registry
       run: dotnet nuget push *.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-#       working-directory: GH.MiscToolbox
+
+    - name: Download Yak
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: curl -o GH.MiscToolbox/GH.MiscToolbox/yak.exe http://files.mcneel.com/yak/tools/latest/yak.exe
+      
+    - name: List yak
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: ls GH.MiscToolbox/GH.MiscToolbox
+
+    - name: Change Manifest version
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        $filePath = 'manifest.yml'
+        $fileContent = (Get-Content $filePath)
+        echo $fileContent
+        $replacedFileContent = $fileContent
+        $replacedFileContent = $replacedFileContent.Replace('version: 0.0.0', ( 'version: ' + $env:NUMERICAL_VERSION))
+        echo $replacedFileContent
+        Out-File -FilePath $filePath -InputObject $replacedFileContent
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
     
-#     - name: Publish Package
-#       uses: brandedoutcast/publish-nuget@v2.5.5
-#       with:
-#           PROJECT_FILE_PATH: GH.MiscToolbox/GH.MiscToolbox/GH.MiscToolbox.csproj
-#           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-#           # NuGet package id, used for version detection & defaults to project name
-#           PACKAGE_NAME: GH.MiscToolbox
-#           # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
-#           VERSION_STATIC: ${{ env.RELEASE_VERSION }}
+    - name: Build Yak
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: ..\..\yak.exe build
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
+
+    - name: Push new version to YAK
+      run: |
+        $YAK_FILE=$(ls *.yak)
+        echo $YAK_FILE
+        ..\..\yak.exe push $YAK_FILE
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/bin/Yak
+      env:
+        YAK_TOKEN: ${{ secrets.YAK_TOKEN }}

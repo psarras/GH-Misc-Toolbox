@@ -42,6 +42,34 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       run: nuget restore GH.MiscToolbox/GH.MiscToolbox.sln
     
+    - name: Change Assembly version
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        $filePath = 'AssemblyInfo.cs'
+        $fileContent = (Get-Content $filePath)
+        echo $fileContent
+        $replacedFileContent = $fileContent
+        $replacedFileContent = $replacedFileContent.Replace('[assembly: AssemblyVersion("0.0.0.0")]', ( '[assembly: AssemblyVersion("' + $env:NUMERICAL_VERSION + '")]' ))
+        $replacedFileContent = $replacedFileContent.Replace('[assembly: AssemblyFileVersion("0.0.0.0")]', ( '[assembly: AssemblyFileVersion("' + $env:NUMERICAL_VERSION + '")]' ))
+        echo $replacedFileContent
+        Out-File -FilePath $filePath -InputObject $replacedFileContent
+      working-directory: GH.MiscToolbox/GH.MiscToolbox/Properties
+    
+    - name: Change Grasshopper Info version
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      run: |
+        $filePath = 'GH.MiscToolboxInfo.cs'
+        $fileContent = (Get-Content $filePath)
+        echo $fileContent
+        $replacedFileContent = $fileContent
+        $replacedFileContent = $replacedFileContent.Replace('public override string Version => "0.0.0.0";', ( 'public override string Version => "' + $env:NUMERICAL_VERSION + '";' ))
+        $replacedFileContent = $replacedFileContent.Replace('public override string AssemblyVersion => "0.0.*";', ( 'public override string AssemblyVersion => "' + $env:NUMERICAL_VERSION + '";' ))
+        echo $replacedFileContent
+        Out-File -FilePath $filePath -InputObject $replacedFileContent
+      working-directory: GH.MiscToolbox/GH.MiscToolbox
+    
     - name: Build the Solution
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'

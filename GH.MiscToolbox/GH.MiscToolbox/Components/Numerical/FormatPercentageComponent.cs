@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.Numerical
 {
     public class FormatPercentageComponent : GH_Component
     {

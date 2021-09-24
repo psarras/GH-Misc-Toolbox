@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
 // folder in Grasshopper.
 // You can use the _GrasshopperDeveloperSettings Rhino command for that.
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.Utilities
 {
     public class NormalizeComponent : GH_Component
     {

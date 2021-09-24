@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.IO
 {
     public class RelativePathsComponent : GH_Component
     {

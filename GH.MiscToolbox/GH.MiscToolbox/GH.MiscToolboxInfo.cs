@@ -2,7 +2,7 @@
 using System.Drawing;
 using Grasshopper.Kernel;
 
-namespace GH.MiscToolbox
+namespace MiscToolbox
 {
     public class MiscToolboxInfo : GH_AssemblyInfo
     {

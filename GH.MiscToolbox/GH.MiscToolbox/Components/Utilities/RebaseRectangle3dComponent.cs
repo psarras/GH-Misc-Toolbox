@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components.Utilities
+namespace MiscToolbox.Components.Utilities
 {
     public class RebaseRectangle3dComponent : GH_Component
     {

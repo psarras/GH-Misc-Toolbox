@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.Numerical
 {
     public class ConstrainComponent : GH_Component
     {

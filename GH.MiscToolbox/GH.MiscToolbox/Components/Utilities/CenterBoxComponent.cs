@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Grasshopper.Kernel;
+using MiscToolbox.Extensions;
 using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.Utilities
 {
     public class CenterBoxComponent : GH_Component
     {

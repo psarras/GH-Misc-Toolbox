@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
 using System.IO;
+using Grasshopper.Kernel;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.IO
 {
     public class DeconstructPathComponent : GH_Component
     {

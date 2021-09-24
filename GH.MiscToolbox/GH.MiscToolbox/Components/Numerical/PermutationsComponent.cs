@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components.Analytics
+namespace MiscToolbox.Components.Numerical
 {
     public class PermutationsComponent : GH_Component
     {
@@ -90,11 +89,11 @@ namespace GH.MiscToolbox.Components.Analytics
                     break;
                 case PermutationTypes.kComp:
                     combinations = GetNumberOfKComb(options, selection);
-
+                    var digits = options.ToString().Length;
                     if (combinations <= 1000000)
                     {
                         permutations = GetKCombs(Enumerable.Range(0, options), selection);
-                        perm = permutations.Select(x => string.Join("", x)).ToList();
+                        perm = permutations.Select(x => string.Join("", x.Select(y => y.ToString().PadLeft(digits, '0')))).ToList();
                     }
                     DA.SetDataList(1, perm);
                     DA.SetData(0, combinations);
@@ -242,8 +241,8 @@ namespace GH.MiscToolbox.Components.Analytics
         /// <returns></returns>
         double GetNumberOfKComb(double listLength, double conbinationSize)
         {
-            return Factorial(listLength) /
-              (Factorial(conbinationSize) * Factorial(listLength - conbinationSize));
+            return FactorialLoop(listLength) /
+              (FactorialLoop(conbinationSize) * FactorialLoop(listLength - conbinationSize));
         }
 
         double GetNumberOfKCombRep(double listLength, double combinationSize)
@@ -259,6 +258,16 @@ namespace GH.MiscToolbox.Components.Analytics
         double GetNumboerOfPermuationsRep(double listLength, double combinationSize)
         {
             return Math.Pow(listLength, combinationSize);
+        }
+
+        double FactorialLoop(double num)
+        {
+            double fac = 1;
+            for (int i = 1; i <= num; i++)
+            {
+                fac *= i;
+            }
+            return fac;
         }
 
         double Factorial(double num)

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Windows.Forms;
 using GH_IO.Serialization;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
+using MiscToolbox.Extensions;
 using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components.Analysis
+namespace MiscToolbox.Components.Analysis
 {
     public class MeshRayInteresectionParallelComponent : GH_Component
     {

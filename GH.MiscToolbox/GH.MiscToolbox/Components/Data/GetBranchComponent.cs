@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
-using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.Data
 {
     public class GetBranchComponent : GH_Component
     {

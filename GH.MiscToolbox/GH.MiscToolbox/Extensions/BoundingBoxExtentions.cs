@@ -1,11 +1,6 @@
 ﻿using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GH.MiscToolbox
+namespace MiscToolbox.Extensions
 {
     public static class BoundingBoxExtentions
     {

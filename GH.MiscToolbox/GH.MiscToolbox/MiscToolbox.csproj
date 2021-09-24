@@ -8,7 +8,7 @@
     <ProjectGuid>{04AF3ED6-B216-47CC-A1F3-6A61922E3EF8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GH.MiscToolbox</RootNamespace>
+    <RootNamespace>MiscToolbox</RootNamespace>
     <AssemblyName>GH.MiscToolbox</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -59,7 +59,6 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoundingBoxExtentions.cs" />
     <Compile Include="Components\Analysis\MeshRayInteresectionParallelComponent.cs" />
     <Compile Include="Components\Numerical\PermutationsComponent.cs" />
     <Compile Include="Components\Utilities\ArrayGeometryComponent.cs" />
@@ -87,8 +86,11 @@
     <Compile Include="Components\Numerical\SymmetricalDomainComponent.cs" />
     <Compile Include="Components\Numerical\ValueStatsComponent.cs" />
     <Compile Include="Components\Utilities\RebaseRectangle3dComponent.cs" />
+    <Compile Include="Extensions\BoundingBoxExtentions.cs" />
+    <Compile Include="Extensions\GeometryExtentions.cs" />
+    <Compile Include="Extensions\GHStructureExtentions.cs" />
+    <Compile Include="Extensions\Point3dExtention.cs" />
     <Compile Include="GH.MiscToolboxInfo.cs" />
-    <Compile Include="GHStructureExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +106,6 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -131,13 +132,4 @@ COPY "$(SolutionDir)"..\"LICENSE" $(TargetDir)Yak\LICENSE</PostBuildEvent>
     </StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>
-  <Import Project="..\packages\RhinoCommon.6.34.21034.7001\build\net45\RhinoCommon.targets" Condition="Exists('..\packages\RhinoCommon.6.34.21034.7001\build\net45\RhinoCommon.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\RhinoCommon.6.34.21034.7001\build\net45\RhinoCommon.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RhinoCommon.6.34.21034.7001\build\net45\RhinoCommon.targets'))" />
-    <Error Condition="!Exists('..\packages\Grasshopper.6.34.21034.7001\build\net45\Grasshopper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grasshopper.6.34.21034.7001\build\net45\Grasshopper.targets'))" />
-  </Target>
-  <Import Project="..\packages\Grasshopper.6.34.21034.7001\build\net45\Grasshopper.targets" Condition="Exists('..\packages\Grasshopper.6.34.21034.7001\build\net45\Grasshopper.targets')" />
 </Project>

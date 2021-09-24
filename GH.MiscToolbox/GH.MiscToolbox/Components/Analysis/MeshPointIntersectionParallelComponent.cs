@@ -6,9 +6,10 @@ using GH_IO.Serialization;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
+using MiscToolbox.Extensions;
 using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.Analysis
 {
     public class MeshPointIntersectionParallelComponent : GH_Component
     {

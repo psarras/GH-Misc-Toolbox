@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using GH_IO.Serialization;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Parameters;
 using Grasshopper.Kernel.Types;
-using Rhino.Geometry;
 
-namespace GH.MiscToolbox.Components
+namespace MiscToolbox.Components.IO
 {
     public class LoadArchiveComponent : GH_Component, IGH_VariableParameterComponent
     {

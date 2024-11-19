@@ -22,6 +22,7 @@ jobs:
         args: >
           -Dsonar.organization=psarras
           -Dsonar.projectKey=psarras_GH-Misc-Toolbox
+          -Dsonar.sources=GH.MiscToolbox
           -Dsonar.exclusions=docs/**
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

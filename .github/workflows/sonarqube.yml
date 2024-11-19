@@ -19,11 +19,11 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@v3.1.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
       with:
         projectBaseDir: GH.MiscToolbox
+        sources: GH.MiscToolbox
+        exclusions: docs
         args: >
           -Dsonar.organization=psarras
           -Dsonar.projectKey=psarras_GH-Misc-Toolbox
-          -Dsonar.sources=GH.MiscToolbox
-          -Dsonar.exclusions=docs/**
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         

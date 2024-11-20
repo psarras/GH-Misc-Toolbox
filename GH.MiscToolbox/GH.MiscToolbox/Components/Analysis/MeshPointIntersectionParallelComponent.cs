@@ -17,9 +17,9 @@ namespace MiscToolbox.Components.Analysis
         /// Initializes a new instance of the MeshRayIntersectionsParallelComponent class.
         /// </summary>
         public MeshPointIntersectionParallelComponent()
-          : base("Mesh Point Intersections Parallel", "MeshPoint",
-              "Run an analysis for meshes for specific target points",
-              "MiscToolbox", "Analysis")
+            : base("Mesh Point Intersections Parallel", "MeshPoint",
+                "Run an analysis for meshes for specific target points",
+                "MiscToolbox", "Analysis")
         {
         }
 
@@ -44,9 +44,11 @@ namespace MiscToolbox.Components.Analysis
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddNumberParameter("Intersections", "I", "percentage of target points each panel hits", GH_ParamAccess.tree);
+            pManager.AddNumberParameter("Intersections", "I", "percentage of target points each panel hits",
+                GH_ParamAccess.tree);
             pManager.AddLineParameter("Ray", "R", "Ray hits, used for debugging", GH_ParamAccess.tree);
-            pManager.AddNumberParameter("Distance", "D", "Distance to each hit, used for debugging", GH_ParamAccess.tree);
+            pManager.AddNumberParameter("Distance", "D", "Distance to each hit, used for debugging",
+                GH_ParamAccess.tree);
             pManager.AddBooleanParameter("Hit", "H", "If you hit the target, used for debugging", GH_ParamAccess.tree);
         }
 
@@ -79,8 +81,6 @@ namespace MiscToolbox.Components.Analysis
             if (!run)
                 return;
 
-            List<int> hits = new List<int>();
-            var jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
 
             var context = new Mesh();
             M.ForEach(x => context.Append(x));
@@ -113,7 +113,7 @@ namespace MiscToolbox.Components.Analysis
 
             for (int k = 0; k < Mt.Count; k++)
             {
-                jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
+                List<Tuple<int, int, Ray3d, Mesh, int[], int>> jobs = new List<Tuple<int, int, Ray3d, Mesh, int[], int>>();
                 distData = new double[points.Count][];
                 pointData = new Point3d[points.Count][];
                 hitData = new bool[points.Count][];
@@ -132,15 +132,16 @@ namespace MiscToolbox.Components.Analysis
                         //  Cast Ray
                         Vector3d direction = targets[k][j].Value - points[i];
                         bool cast = true;
-                        if(checkNormals)
+                        if (checkNormals)
                         {
                             double a = Vector3d.VectorAngle(direction, normals[i]);
                             cast = a < angle;
                         }
 
                         Ray3d ray = new Ray3d(points[i], direction);
-                        if(cast)
-                            jobs.Add(new Tuple<int, int, Ray3d, Mesh, int[], int>(i, j, ray, context, faceBarriers, k + 1));
+                        if (cast)
+                            jobs.Add(new Tuple<int, int, Ray3d, Mesh, int[], int>(i, j, ray, context, faceBarriers,
+                                k + 1));
                     }
                 }
 
@@ -162,7 +163,8 @@ namespace MiscToolbox.Components.Analysis
 
             if (raysDebug)
             {
-                var lines = pointDataResults.Select((x, i) => x.Select((y, j) => y.Select((z, k) => new Line(points[j], z)).ToArray()).ToArray()).ToArray();
+                var lines = pointDataResults.Select((x, i) =>
+                    x.Select((y, j) => y.Select((z, k) => new Line(points[j], z)).ToArray()).ToArray()).ToArray();
                 DA.SetDataTree(1, lines.ToTree<Line>());
             }
 
@@ -172,8 +174,6 @@ namespace MiscToolbox.Components.Analysis
 
             if (hitsDebug)
                 DA.SetDataTree(3, hitDataResults.ToTree<bool>());
-
-
         }
 
         double[][] distData;
@@ -183,16 +183,16 @@ namespace MiscToolbox.Components.Analysis
         private bool distDebug = false;
         private bool hitsDebug = false;
 
-        private bool includeThreshold = false;
         private double angle;
-        public double Average(bool[] data)
-        {
 
+        public static double Average(bool[] data)
+        {
             int count = 0;
             foreach (var d in data)
             {
                 count += d ? 1 : 0;
             }
+
             return (1.0 * count) / data.Length;
         }
 
@@ -249,6 +249,7 @@ namespace MiscToolbox.Components.Analysis
                 else
                     pointData[task.Item1][task.Item2] = Point3d.Unset;
             }
+
             hitData[task.Item1][task.Item2] = d >= 0 && targetHit;
         }
 
@@ -258,7 +259,6 @@ namespace MiscToolbox.Components.Analysis
             ToolStripMenuItem item1 = Menu_AppendItem(menu, "Rays Debug", Menu_Rays, true, raysDebug);
             ToolStripMenuItem item2 = Menu_AppendItem(menu, "Distances", Menu_Dist, true, distDebug);
             ToolStripMenuItem item3 = Menu_AppendItem(menu, "Hits", Menu_Hits, true, hitsDebug);
-
         }
 
         private void Menu_Hits(object sender, EventArgs e)
@@ -299,15 +299,7 @@ namespace MiscToolbox.Components.Analysis
         /// <summary>
         /// Provides an Icon for the component.
         /// </summary>
-        protected override System.Drawing.Bitmap Icon
-        {
-            get
-            {
-                //You can add image files to your project resources and access them like this:
-                // return Resources.IconForThisComponent;
-                return null;
-            }
-        }
+        protected override System.Drawing.Bitmap Icon => null;
 
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
